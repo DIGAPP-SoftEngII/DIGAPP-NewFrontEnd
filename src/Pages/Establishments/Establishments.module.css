@@ -1,0 +1,48 @@
+.main__container {
+  height: 100vh;
+}
+
+.content {
+  max-width: 85%;
+  padding: 10px;
+  padding-bottom: 40px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 33% 33% 33%;
+}
+
+.card {
+  height: 300px;
+  margin: 10px;
+  padding: 10px;
+  background-color: rgba(5, 127, 141, 1);
+  color: aliceblue;
+  overflow: hidden;
+  text-align: left;
+  transition: 200ms;
+}
+
+.card:hover {
+  color: rgba(255, 114, 97, 1);
+  box-shadow: 3px 6px 6px rgba(3, 32, 51, 0.8);
+  transform: translateY(-3%);
+  background: rgba(0, 0, 0, 0, 0.5);
+}
+
+.title {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.subtitle {
+  margin-top: 15px;
+}
+
+.text {
+  color: aliceblue;
+  font-size: 13px;
+}
+
+.link {
+  text-decoration: none;
+}
