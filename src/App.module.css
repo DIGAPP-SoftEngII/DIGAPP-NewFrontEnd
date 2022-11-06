@@ -1,8 +1,9 @@
 .main__container {
+  height: 100%;
   text-align: center;
   background-color: rgba(183, 200, 203, 1);
 }
 
 .main__content {
-  padding-top: 100px;
+  padding-top: 90px;
 }

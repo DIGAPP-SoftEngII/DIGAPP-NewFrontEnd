@@ -15,24 +15,30 @@ function Establishments() {
 
   return (
     <div className={styles.main__container}>
-      <h2>Establecimientos</h2>
+      <h2 className={styles.tittle}>Establecimientos</h2>
       <div className={styles.content}>
         {establishments ? (
           establishments.map((est) => (
-            <Link key={est.id} className={styles.link}>
+            <Link
+              key={est.id}
+              className={styles.link}
+              to={`/establishment/${est.id}`}
+            >
               <Card className={styles.card}>
                 <img alt="Sample" src={est.cover_picture} />
                 <CardBody>
-                  <cardTitle tag="h5" className={styles.title}>
+                  <cardTitle tag="h5" className={styles.card__title}>
                     {est.name}
                   </cardTitle>
-                  <div className={styles.subtitle}>
+                  <div className={styles.card__subtitle}>
                     <cardSubtitle tag="h6">
-                      <h6 className={styles.text}>Direccion: {est.address}</h6>
-                      <h6 className={styles.text}>
+                      <h6 className={styles.card__text}>
+                        Direccion: {est.address}
+                      </h6>
+                      <h6 className={styles.card__text}>
                         Calificacion: {est.rating}
                       </h6>
-                      <h6 className={styles.text}>
+                      <h6 className={styles.card__text}>
                         Internet: {est.internet_quality}
                       </h6>
                     </cardSubtitle>

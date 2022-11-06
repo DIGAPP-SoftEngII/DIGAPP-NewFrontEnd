@@ -1,0 +1,94 @@
+.main__container {
+  height: 100%;
+  margin: -30px 7rem;
+  margin-bottom: 200px;
+}
+
+.est__info {
+  margin-bottom: 60px;
+}
+
+.est__stats {
+  margin-top: 100px;
+}
+
+.est__container {
+  width: 100%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  border-radius: 5px;
+  padding: 20px;
+}
+
+.est__img {
+  object-fit: cover;
+  width: 100%;
+  height: 350px;
+  border-radius: 5px;
+}
+
+.est__tittle1 {
+  margin: 50px;
+  font-size: 4.2rem;
+  color: rgba(3, 32, 51, 0.8);
+}
+
+.est__tittle2 {
+  font-size: 2.5rem;
+  color: rgba(3, 32, 51, 0.8);
+}
+
+.est__body {
+  height: 400px;
+}
+
+.est__cardGroup1 {
+  display: grid;
+  grid-template-rows: 50% 50%;
+}
+.est__cardGroup2 {
+  display: grid;
+  grid-template-columns: 70% 30%;
+}
+
+.est__card1 {
+  background-color: rgb(151, 177, 182);
+  border: solid 1px black;
+  margin: 10px;
+  padding: 10px;
+  overflow: hidden;
+}
+.est__card2 {
+  height: 300px;
+  background-color: rgb(151, 177, 182);
+  border: solid 1px black;
+  margin: 10px;
+  padding: 10px;
+  overflow: hidden;
+}
+
+.est__cardTittle {
+  font-size: 1.8rem;
+  color: rgba(3, 32, 51, 0.8);
+}
+
+.est__cardParagraph {
+  color: rgba(3, 32, 51, 0.8);
+  margin: 0px 20px;
+  text-align: left;
+  justify-content: center;
+}
+
+.est__icons {
+  margin-right: 10px;
+}
+
+.est__statsCardGroup {
+  display: grid;
+  grid-template-columns: 25% 25% 25% 25%;
+}
+
+.est__stastCard {
+  background-color: rgb(151, 177, 182);
+}

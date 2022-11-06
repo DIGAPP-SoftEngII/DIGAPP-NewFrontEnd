@@ -2,6 +2,7 @@ import DigNavbar from "./Components/DigNavbar/DigNavbar";
 import { Route, Routes } from "react-router-dom";
 import Home from "./Pages/Home/Home";
 import Establishments from "./Pages/Establishments/Establishments";
+import Establishment from "./Pages/Establishment/Establishment";
 import styles from "./App.module.css";
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
         <Routes>
           <Route exact path="/" element={<Home />} />
           <Route exact path="/establishments" element={<Establishments />} />
+          <Route exact path="/establishment/:id" element={<Establishment />} />
         </Routes>
       </div>
     </div>
