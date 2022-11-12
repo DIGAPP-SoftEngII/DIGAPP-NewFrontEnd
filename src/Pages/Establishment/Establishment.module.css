@@ -84,6 +84,15 @@
   margin-right: 10px;
 }
 
+.styles.est__ratings {
+  display: grid;
+  grid-column: 33% 33% 33%;
+}
+
+.est__tittle3 {
+  color: rgba(3, 32, 51, 0.8);
+}
+
 .est__statsCardGroup {
   display: grid;
   grid-template-columns: 25% 25% 25% 25%;

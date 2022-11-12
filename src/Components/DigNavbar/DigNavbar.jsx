@@ -30,7 +30,7 @@ function DigNavbar() {
                 <Link
                   className={styles.nav__link}
                   onClick={() => {
-                    logout();
+                    logout(window.location.origin);
                   }}
                 >
                   Logout
