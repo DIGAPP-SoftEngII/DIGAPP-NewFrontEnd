@@ -53,3 +53,7 @@
   transition: 250ms;
   cursor: pointer;
 }
+
+button {
+  text-decoration: none;
+}
