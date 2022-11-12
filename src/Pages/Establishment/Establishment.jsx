@@ -127,7 +127,7 @@ function Establishment() {
         <div className={styles.est__statsCardGroup}>
           {reports ? (
             reports.map((rep) => (
-              <Card key={rep.id}>
+              <Card key={rep.id} className={styles.est__stastCard}>
                 <span>
                   Usuario: <span>{rep.user_id}</span>
                 </span>

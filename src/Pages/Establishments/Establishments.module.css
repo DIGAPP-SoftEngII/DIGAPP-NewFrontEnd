@@ -49,6 +49,11 @@
   font-size: 13px;
 }
 
+.card__img {
+  height: 150px;
+  overflow: hidden;
+}
+
 .link {
   text-decoration: none;
 }

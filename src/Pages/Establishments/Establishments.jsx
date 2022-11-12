@@ -25,7 +25,11 @@ function Establishments() {
               to={`/establishment/${est.id}`}
             >
               <Card className={styles.card}>
-                <img alt="Sample" src={est.cover_picture} />
+                <img
+                  alt="Sample"
+                  src={est.cover_picture}
+                  className={styles.card__img}
+                />
                 <CardBody>
                   <cardTitle tag="h5" className={styles.card__title}>
                     {est.name}
