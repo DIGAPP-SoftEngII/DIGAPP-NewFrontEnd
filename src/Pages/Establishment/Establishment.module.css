@@ -1,7 +1,7 @@
 .main__container {
   height: 100%;
   margin: -30px 7rem;
-  margin-bottom: 200px;
+  padding-bottom: 100px;
 }
 
 .est__info {
@@ -84,9 +84,11 @@
   margin-right: 10px;
 }
 
-.styles.est__ratings {
+.est__ratings {
   display: grid;
-  grid-column: 33% 33% 33%;
+  grid-template-columns: 33% 33% 33%;
+  margin-top: 30px;
+  margin-bottom: 30px;
 }
 
 .est__tittle3 {
@@ -100,4 +102,17 @@
 
 .est__stastCard {
   background-color: rgb(151, 177, 182);
+}
+
+.est__button {
+  background-color: rgba(3, 32, 51, 0.8);
+  color: white;
+}
+
+.est__make__report {
+  background: rgba(3, 32, 51, 0.8);
+}
+
+.est__final {
+  margin-bottom: 30px;
 }

@@ -33,7 +33,8 @@ function Profile() {
             )}
           </p>
           <p className={styles.prof__text__bold}>
-            Creo que esto es un toekn o un id: <span>{user.sub}</span>
+            User ID:
+            <span> {user.sub.split("|")[1]} </span>
           </p>
         </>
       )}

@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { getEstablishments } from "../../Services/Api";
 import { Card, CardBody } from "reactstrap";
+import Stars from "../../Components/Stars/Stars";
 import Loading from "../../Components/Loading/Loading";
 import styles from "./Establishments.module.css";
 
@@ -40,10 +41,12 @@ function Establishments() {
                         Direccion: {est.address}
                       </h6>
                       <h6 className={styles.card__text}>
-                        Calificacion: {est.rating}
+                        Calificacion:
+                        <Stars state={est.rating} />
                       </h6>
                       <h6 className={styles.card__text}>
-                        Internet: {est.internet_quality}
+                        Internet:
+                        <Stars state={est.internet_quality} />
                       </h6>
                     </cardSubtitle>
                   </div>

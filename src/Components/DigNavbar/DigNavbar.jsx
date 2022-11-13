@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 import styles from "./DigNavbar.module.css";
 
@@ -30,7 +30,7 @@ function DigNavbar() {
                 <Link
                   className={styles.nav__link}
                   onClick={() => {
-                    logout(window.location.origin);
+                    logout();
                   }}
                 >
                   Logout

@@ -7,13 +7,13 @@ import App from "./App";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <Auth0Provider
-    domain="digapp.us.auth0.com"
-    clientId="2ucCXdsyqbfuYIYVYv0670aJcN89PAxj"
-    redirectUri={window.location.origin}
-  >
-    <BrowserRouter>
+  <BrowserRouter>
+    <Auth0Provider
+      domain="digapp.us.auth0.com"
+      clientId="2ucCXdsyqbfuYIYVYv0670aJcN89PAxj"
+      redirectUri={window.location.origin}
+    >
       <App />
-    </BrowserRouter>
-  </Auth0Provider>
+    </Auth0Provider>
+  </BrowserRouter>
 );
