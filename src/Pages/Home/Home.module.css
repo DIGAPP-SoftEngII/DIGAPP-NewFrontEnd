@@ -1,7 +1,14 @@
-.slider__section__one {
-  background-color: #b7c8cb;
+.my__home {
+  margin-top: -100px;
 }
 
-.slider__section__two {
-  background-color: #ff7261;
+.home__landing {
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+}
+
+.home__landing__img {
+  height: 100%;
+  width: 100%;
 }

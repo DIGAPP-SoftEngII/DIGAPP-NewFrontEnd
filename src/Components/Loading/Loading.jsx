@@ -5,7 +5,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 function Loading() {
   return (
     <div>
-      <Spinner color="dark" />
+      <Spinner color="dark" type="grow" />
     </div>
   );
 }

@@ -23,3 +23,17 @@ export const setReport = ({ data }) => {
     .post("https://backenddig.herokuapp.com/api/reports/", data)
     .then((res) => console.log(res));
 };
+
+export const getLogin = ({ id }) => {
+  return axios
+    .get(`https://backenddig.herokuapp.com/api/users/1/login`, {
+      params: { id: id },
+    })
+    .then((res) => res.data);
+};
+
+export const setLogin = ({ data }) => {
+  return axios
+    .post("https://backenddig.herokuapp.com/api/users/", data)
+    .then((res) => console.log(res));
+};

@@ -1,56 +1,67 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
+import {
+  Collapse,
+  Nav,
+  Navbar,
+  NavbarBrand,
+  NavItem,
+  NavbarToggler,
+} from "reactstrap";
 import styles from "./DigNavbar.module.css";
 
 function DigNavbar() {
   const { loginWithRedirect, isAuthenticated, logout, user } = useAuth0();
 
   return (
-    <div className={styles.main__container}>
-      <nav className={styles.nav__container}>
-        <Link to="/" className={styles.nav__logo}>
-          DIGAPP
-        </Link>
-        <ul className={styles.nav__list}>
-          <li className={styles.nav__item}>
+    <div>
+      <Navbar color="dark" dark fixed="top">
+        <NavbarBrand>
+          <Link color="light" to="/" className={styles.nav__logo}>
+            DIGAPP
+          </Link>
+        </NavbarBrand>
+        <Nav className={styles.nav__list}>
+          <NavItem className={styles.nav__item}>
             <Link to="/establishments" className={styles.nav__link}>
               Establecimientos
             </Link>
-          </li>
-          <li className={styles.nav__item}></li>
-          {isAuthenticated ? (
-            <>
-              <li>
-                <Link to="/profile" className={styles.nav__link}>
-                  {user.given_name}
-                </Link>
-              </li>
-              <li className={styles.nav__item}>
+          </NavItem>
+          <NavItem className={styles.nav__item}>
+            {isAuthenticated ? (
+              <Nav>
+                <NavItem className={styles.nav__item}>
+                  <Link to="/profile" className={styles.nav__link}>
+                    {user.given_name}
+                  </Link>
+                </NavItem>
+                <NavItem className={styles.nav__item}>
+                  <Link
+                    className={styles.nav__link}
+                    onClick={() => {
+                      logout();
+                    }}
+                  >
+                    Logout
+                  </Link>
+                </NavItem>
+              </Nav>
+            ) : (
+              <NavItem className={styles.nav__item}>
                 <Link
                   className={styles.nav__link}
                   onClick={() => {
-                    logout();
+                    loginWithRedirect();
                   }}
                 >
-                  Logout
+                  Login
                 </Link>
-              </li>
-            </>
-          ) : (
-            <li>
-              <Link
-                className={styles.nav__link}
-                onClick={() => {
-                  loginWithRedirect();
-                }}
-              >
-                Login
-              </Link>
-            </li>
-          )}
-        </ul>
-      </nav>
+              </NavItem>
+            )}
+          </NavItem>
+        </Nav>
+      </Navbar>
     </div>
   );
 }
