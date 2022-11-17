@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { getEstablishments } from "../../Services/Api";
 import { Card, CardBody } from "reactstrap";
+import { MdNetworkCheck, MdCheck } from "react-icons/md";
 import Stars from "../../Components/Stars/Stars";
 import Loading from "../../Components/Loading/Loading";
 import styles from "./Establishments.module.css";
@@ -16,7 +17,9 @@ function Establishments() {
 
   return (
     <div className={styles.main__container}>
-      <h2 className={styles.tittle}>Establecimientos</h2>
+      <div className={styles.section1}>
+        <h1 className={styles.tittle}>Establecimientos</h1>
+      </div>
       <div className={styles.content}>
         {establishments ? (
           establishments.map((est) => (
@@ -41,12 +44,22 @@ function Establishments() {
                         Direccion: {est.address}
                       </h6>
                       <h6 className={styles.card__text}>
-                        Calificacion:
-                        <Stars state={est.rating} />
+                        <div className={styles.card__items}>
+                          <MdCheck size={35} />
+                          <div>
+                            Calificacion:
+                            <Stars state={est.rating} />
+                          </div>
+                        </div>
                       </h6>
                       <h6 className={styles.card__text}>
-                        Internet:
-                        <Stars state={est.internet_quality} />
+                        <div className={styles.card__items}>
+                          <MdNetworkCheck size={35} />
+                          <div>
+                            Internet:
+                            <Stars state={est.rating} />
+                          </div>
+                        </div>
                       </h6>
                     </cardSubtitle>
                   </div>

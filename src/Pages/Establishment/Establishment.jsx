@@ -2,7 +2,6 @@ import React from "react";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
-import { Card, CardTitle } from "reactstrap";
 import Loading from "../../Components/Loading/Loading";
 import { FaStar } from "react-icons/fa";
 import { TbBrandAirtable } from "react-icons/tb";
@@ -15,9 +14,23 @@ import {
   MdAccessTime,
   MdAccessTimeFilled,
   MdAccountBalance,
+  MdCheck,
+  MdNetworkCheck,
+  MdOutlinePersonAddAlt,
 } from "react-icons/md";
 import Stars from "../../Components/Stars/Stars";
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
+import {
+  Card,
+  CardTitle,
+  Button,
+  Modal,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
+  InputGroup,
+  InputGroupText,
+  Input,
+} from "reactstrap";
 import { getEstablishment } from "../../Services/Api";
 import { getReports } from "../../Services/Api";
 import { setReport } from "../../Services/Api";
@@ -163,23 +176,38 @@ function Establishment() {
             </div>
           </div>
           <div className={styles.est__stats}>
-            <h3 className={styles.est__tittle2}>Estadisticas</h3>
-            <div className={styles.est__ratings}>
-              <div>
-                <h5 className={styles.est__tittle3}>Calificación</h5>
-                <Stars state={est.rating} />
-                <p>{est.rating}</p>
+            <Card className={styles.est__ratings__card}>
+              <h3 className={styles.est__tittle2}>Estadisticas</h3>
+              <div className={styles.est__ratings}>
+                <div>
+                  <h5 className={styles.est__tittle3}>Calificación</h5>
+                  <div className={styles.est__card__items}>
+                    <MdCheck size={35} />
+                    <div>
+                      <Stars state={est.rating} />
+                      <p>{est.rating}</p>
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <h5 className={styles.est__tittle3}>Internet</h5>
+                  <div className={styles.est__card__items}>
+                    <MdNetworkCheck size={35} />
+                    <div>
+                      <Stars state={est.internet_quality} />
+                      <p>{est.internet_quality}</p>
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <h5 className={styles.est__tittle3}>Capacidad</h5>
+                  <div className={styles.est__card__items}>
+                    <MdOutlinePersonAddAlt size={35} />
+                    <p>{est.capacity}</p>
+                  </div>
+                </div>
               </div>
-              <div>
-                <h5 className={styles.est__tittle3}>Internet</h5>
-                <Stars state={est.internet_quality} />
-                <p>{est.internet_quality}</p>
-              </div>
-              <div>
-                <h5 className={styles.est__tittle3}>Capacidad</h5>
-                <p>{est.capacity}</p>
-              </div>
-            </div>
+            </Card>
             <h5 className={(styles.est__tittle3, styles.est__final)}>
               Reportes de la comunidad
             </h5>
@@ -202,58 +230,82 @@ function Establishment() {
                 Dejanos tus opinones
               </ModalHeader>
               <ModalBody>
-                {stars.map((_, index) => {
-                  return (
-                    <FaStar
-                      key={index}
-                      size={20}
-                      color={
-                        rating_business > index ? colors.orange : colors.grey
-                      }
-                      onClick={() => {
-                        setRating_business(index + 1);
-                      }}
-                    />
-                  );
-                })}
-                <h5>Calificacion del lugar</h5>
-                {stars.map((_, index) => {
-                  return (
-                    <FaStar
-                      key={index}
-                      size={20}
-                      color={
-                        internet_status > index ? colors.orange : colors.grey
-                      }
-                      onClick={() => {
-                        setInternet_status(index + 1);
-                      }}
-                    />
-                  );
-                })}
-                <h5>Calificacion del internet</h5>
-                {stars2.map((_, index) => {
-                  return (
-                    <FaStar
-                      key={index}
-                      size={20}
-                      color={
-                        occupation_status > index ? colors.orange : colors.grey
-                      }
-                      onClick={() => {
-                        setOccupation_status(index + 1);
-                      }}
-                    />
-                  );
-                })}
-                <h5>Que tan lleno esta el lugar</h5>
-                <input
-                  type="textarea"
-                  className="make__input make__text__area"
-                  name="comments"
-                  placeholder="Dejanos tus comentarios"
-                  onChange={(e) => handleChange(e.target.value)}
-                />
+                <div className={styles.est__card__items}>
+                  <MdCheck size={35} />
+                  <div>
+                    {stars.map((_, index) => {
+                      return (
+                        <FaStar
+                          key={index}
+                          size={20}
+                          color={
+                            rating_business > index
+                              ? colors.orange
+                              : colors.grey
+                          }
+                          onClick={() => {
+                            setRating_business(index + 1);
+                          }}
+                        />
+                      );
+                    })}
+                    <h5>Calificacion del lugar</h5>
+                  </div>
+                </div>
+                <div className={styles.est__card__items}>
+                  <MdNetworkCheck size={35} />
+                  <div>
+                    {stars.map((_, index) => {
+                      return (
+                        <FaStar
+                          key={index}
+                          size={20}
+                          color={
+                            internet_status > index
+                              ? colors.orange
+                              : colors.grey
+                          }
+                          onClick={() => {
+                            setInternet_status(index + 1);
+                          }}
+                        />
+                      );
+                    })}
+                    <h5>Calificacion del internet</h5>
+                  </div>
+                </div>
+                <div className={styles.est__card__items}>
+                  <MdOutlinePersonAddAlt size={35} />
+                  <div>
+                    {stars2.map((_, index) => {
+                      return (
+                        <FaStar
+                          key={index}
+                          size={20}
+                          color={
+                            occupation_status > index
+                              ? colors.orange
+                              : colors.grey
+                          }
+                          onClick={() => {
+                            setOccupation_status(index + 1);
+                          }}
+                        />
+                      );
+                    })}
+                    <h5>Que tan lleno esta el lugar</h5>
+                  </div>
+                </div>
+                <InputGroup size="sm">
+                  <InputGroupText>Abc</InputGroupText>
+                  <Input
+                    type="textarea"
+                    className="make__input make__text__area"
+                    name="comments"
+                    placeholder="Dejanos tus comentarios"
+                    onChange={(e) => handleChange(e.target.value)}
+                  />
+                </InputGroup>
               </ModalBody>
               <ModalFooter>
                 <Button

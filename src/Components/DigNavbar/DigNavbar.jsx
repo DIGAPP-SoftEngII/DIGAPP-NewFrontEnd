@@ -1,14 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
-import {
-  Collapse,
-  Nav,
-  Navbar,
-  NavbarBrand,
-  NavItem,
-  NavbarToggler,
-} from "reactstrap";
+import { Nav, Navbar, NavbarBrand, NavItem } from "reactstrap";
 import styles from "./DigNavbar.module.css";
 
 function DigNavbar() {
@@ -16,7 +9,7 @@ function DigNavbar() {
 
   return (
     <div>
-      <Navbar color="dark" dark fixed="top">
+      <Navbar color="black" dark="True" fixed="top" sticky="true">
         <NavbarBrand>
           <Link color="light" to="/" className={styles.nav__logo}>
             DIGAPP
