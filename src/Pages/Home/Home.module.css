@@ -5,9 +5,14 @@
 .main__logo {
   width: 100%;
   text-align: center;
+  margin-bottom: -150px;
 }
 
-.hero__1__img {
+.hero1 {
+  margin-top: 180px;
+}
+
+.hero1__img {
   width: 100%;
 }
 
@@ -25,6 +30,13 @@
 .hero__text2 {
   font-weight: bold;
   color: #ff7261;
+}
+
+hr {
+  background-color: rgba(3, 32, 51, 0.8);
+  border: 2px solid rgba(3, 32, 51, 0.8);
+  border-radius: 5px;
+  margin: 0px 70px;
 }
 
 .card {

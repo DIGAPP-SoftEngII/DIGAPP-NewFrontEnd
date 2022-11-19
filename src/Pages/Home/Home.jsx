@@ -21,25 +21,27 @@ function Home() {
             <hr />
           </Container>
         </section>
-        <section>
+        <section className="section section-lg pt-0">
           <Container className="fluid">
-            <Row>
-              <Col xs="3">
-                <img src={img1} className={styles.hero__1__img} />
-              </Col>
-              <Col xs="6">
-                <p className={styles.hero__text}>
-                  <span className={styles.hero__text1}>Encuentra</span> el lugar
-                  que buscas con actualizaciones en{" "}
-                  <span className={styles.hero__text2}>tiempo real</span>
-                  {"  "}
-                  <FaRegClock />
-                </p>
-              </Col>
-              <Col xs="3">
-                <img src={img1} className={styles.hero__1__img} />
-              </Col>
-            </Row>
+            <div className={styles.hero1}>
+              <Row>
+                <Col xs="3">
+                  <img src={img1} className={styles.hero1__img} />
+                </Col>
+                <Col xs="6">
+                  <p className={styles.hero__text}>
+                    <span className={styles.hero__text1}>Encuentra</span> el
+                    lugar que buscas con actualizaciones en{" "}
+                    <span className={styles.hero__text2}>tiempo real</span>
+                    {"  "}
+                    <FaRegClock />
+                  </p>
+                </Col>
+                <Col xs="3">
+                  <img src={img1} className={styles.hero1__img} />
+                </Col>
+              </Row>
+            </div>
           </Container>
         </section>
         <div className={styles.space} />
