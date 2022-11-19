@@ -2,6 +2,21 @@
   margin-top: 50px;
 }
 
+.main__logo {
+  width: 100%;
+  text-align: center;
+}
+
+.hero__1__img {
+  width: 100%;
+}
+
+.hero__1__text {
+  align-items: center;
+  text-align: center;
+  justify-items: center;
+}
+
 .card {
   background-color: rgb(151, 177, 182);
 }

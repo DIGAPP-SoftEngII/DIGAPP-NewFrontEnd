@@ -1,9 +1,11 @@
 import React from "react";
-import img1 from "../../assets/images/bg-landing.jpg";
-import img2 from "../../assets/images/image9.jpg";
+import BlackLogo from "../../assets/img/BlackLogo.svg";
+import img2 from "../../assets/img/image9.jpg";
+import img1 from "../../assets/img/ramita.svg";
 import styles from "./Home.module.css";
 import { Container, Row, Col, Card, Badge, CardBody, Button } from "reactstrap";
 import { Link } from "react-router-dom";
+import { FaRegClock } from "react-icons/fa";
 import DigNavbar from "../../Components/DigNavbar/DigNavbar";
 
 function Home() {
@@ -11,6 +13,37 @@ function Home() {
     <>
       <DigNavbar />
       <main className={styles.main}>
+        <section className="section section-lg pt-0">
+          <Container className="fluid">
+            <div className={styles.main__logo}>
+              <img src={BlackLogo} />
+            </div>
+          </Container>
+        </section>
+        <section>
+          <Container className="fluid">
+            <Row>
+              <Col xs="3">
+                <img src={img1} className={styles.hero__1__img} />
+              </Col>
+              <Col xs="6">
+                <div className={styles.hero__1__text}>
+                  <h3>
+                    Encunetra el lugar que buscas con actualizaciones en tiempo
+                    real {"  "}
+                    <FaRegClock />
+                  </h3>
+                </div>
+              </Col>
+              <Col xs="3">
+                <img src={img1} className={styles.hero__1__img} />
+              </Col>
+            </Row>
+          </Container>
+        </section>
+        <div className={styles.space} />
+        <div className={styles.space} />
+        <div className={styles.space} />
         <section className="section section-lg pt-0">
           <Container>
             <Card className={styles.card}>
@@ -60,7 +93,7 @@ function Home() {
                     </div>
                   </div>
                   <div className="pl-4">
-                    <h4 className="display-3 text-white">DIG APP</h4>
+                    <img src={BlackLogo} />
                     <p className="text-white">
                       Una aplicación donde encontraras los mejores cafés y
                       coworkings que se acomoden a tu gusto.
