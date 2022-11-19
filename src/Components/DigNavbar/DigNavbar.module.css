@@ -32,6 +32,12 @@
   cursor: pointer;
 }
 
+.dig__logo {
+  height: 30px;
+  width: 110px;
+  margin-left: 30px;
+}
+
 button {
   text-decoration: none;
 }

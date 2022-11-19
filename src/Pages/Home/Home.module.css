@@ -1,14 +1,15 @@
-.my__home {
-  margin-top: -100px;
+.main {
+  margin-top: 50px;
 }
 
-.home__landing {
-  height: 100vh;
-  width: 100%;
-  overflow: hidden;
+.card {
+  background-color: rgb(151, 177, 182);
 }
 
-.home__landing__img {
-  height: 100%;
-  width: 100%;
+.btn {
+  text-decoration: none;
+}
+
+.space {
+  height: 100px;
 }

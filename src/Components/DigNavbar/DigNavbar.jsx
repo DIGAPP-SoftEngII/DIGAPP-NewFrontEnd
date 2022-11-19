@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 import { Nav, Navbar, NavbarBrand, NavItem } from "reactstrap";
+import BlackLogo from "../../assets/images/BlackLogo.png";
 import styles from "./DigNavbar.module.css";
 
 function DigNavbar() {
@@ -12,7 +13,7 @@ function DigNavbar() {
       <Navbar color="black" dark="True" fixed="top" sticky="true">
         <NavbarBrand>
           <Link color="light" to="/" className={styles.nav__logo}>
-            DIGAPP
+            <img src={BlackLogo} className={styles.dig__logo} />
           </Link>
         </NavbarBrand>
         <Nav className={styles.nav__list}>

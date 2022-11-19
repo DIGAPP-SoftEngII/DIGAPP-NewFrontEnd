@@ -8,18 +8,14 @@ import styles from "./App.module.css";
 
 function App() {
   return (
-    <div className={styles.main__container}>
-      <DigNavbar />
-      <div className={styles.main__layout}>
-        <div className={styles.main__content}></div>
-        <Routes>
-          <Route exact path="/" element={<Home />} />
-          <Route exact path="/establishments" element={<Establishments />} />
-          <Route exact path="/establishment/:id" element={<Establishment />} />
-          <Route exact path="/profile" element={<Profile />} />
-        </Routes>
-      </div>
-    </div>
+    <main className={styles.main}>
+      <Routes>
+        <Route exact path="/" element={<Home />} />
+        <Route exact path="/establishments" element={<Establishments />} />
+        <Route exact path="/establishment/:id" element={<Establishment />} />
+        <Route exact path="/profile" element={<Profile />} />
+      </Routes>
+    </main>
   );
 }
 

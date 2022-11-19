@@ -1,7 +1,5 @@
-.main__container {
+.main {
   height: 100%;
   background-color: rgba(183, 200, 203, 1);
-}
-.main__layout {
   padding-top: 50px;
 }
