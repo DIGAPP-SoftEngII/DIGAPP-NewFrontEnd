@@ -11,10 +11,20 @@
   width: 100%;
 }
 
-.hero__1__text {
+.hero__text {
+  font-size: 2.4rem;
   align-items: center;
   text-align: center;
   justify-items: center;
+}
+
+.hero__text1 {
+  font-weight: bold;
+}
+
+.hero__text2 {
+  font-weight: bold;
+  color: #ff7261;
 }
 
 .card {

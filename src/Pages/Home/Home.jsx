@@ -18,6 +18,7 @@ function Home() {
             <div className={styles.main__logo}>
               <img src={BlackLogo} />
             </div>
+            <hr />
           </Container>
         </section>
         <section>
@@ -27,13 +28,13 @@ function Home() {
                 <img src={img1} className={styles.hero__1__img} />
               </Col>
               <Col xs="6">
-                <div className={styles.hero__1__text}>
-                  <h3>
-                    Encunetra el lugar que buscas con actualizaciones en tiempo
-                    real {"  "}
-                    <FaRegClock />
-                  </h3>
-                </div>
+                <p className={styles.hero__text}>
+                  <span className={styles.hero__text1}>Encuentra</span> el lugar
+                  que buscas con actualizaciones en{" "}
+                  <span className={styles.hero__text2}>tiempo real</span>
+                  {"  "}
+                  <FaRegClock />
+                </p>
               </Col>
               <Col xs="3">
                 <img src={img1} className={styles.hero__1__img} />
