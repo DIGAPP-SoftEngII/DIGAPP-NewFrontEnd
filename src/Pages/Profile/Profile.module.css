@@ -1,11 +1,12 @@
-.main__container {
-  padding-bottom: 5rem;
+.main {
+  margin-top: 50px;
 }
 
-.prof__text__bold {
-  font-weight: bold;
+.card {
+  background-color: rgb(151, 177, 182);
+  text-align: center;
 }
 
-span {
-  font-weight: normal;
+.user__img {
+  margin-top: 30px;
 }

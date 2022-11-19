@@ -1,4 +1,4 @@
-.main__container {
+.main {
   height: 100%;
   margin: 0px 7rem;
   padding-bottom: 100px;
@@ -124,4 +124,8 @@
 
 .est__ratings__card {
   background-color: rgb(151, 177, 182);
+}
+
+.est__make__report {
+  background: black;
 }

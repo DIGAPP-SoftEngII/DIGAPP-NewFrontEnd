@@ -35,6 +35,7 @@ import { getEstablishment } from "../../Services/Api";
 import { getReports } from "../../Services/Api";
 import { setReport } from "../../Services/Api";
 import styles from "./Establishment.module.css";
+import DigNavbar from "../../Components/DigNavbar/DigNavbar";
 
 function Establishment() {
   const [reports, setReports] = useState([]);
@@ -103,252 +104,259 @@ function Establishment() {
   }, []);
 
   return (
-    <div className={styles.main__container}>
-      {est ? (
-        <>
-          <div className={styles.est__info}>
-            <div className={styles.est__container}>
-              <img
-                alt="est_img"
-                src={est.cover_picture}
-                className={styles.est__img}
-              />
-              <h1 className={styles.est__tittle1}>{est.name}</h1>
+    <>
+      <DigNavbar />
+      <main className={styles.main}>
+        {est ? (
+          <>
+            <div className={styles.est__info}>
+              <div className={styles.est__container}>
+                <img
+                  alt="est_img"
+                  src={est.cover_picture}
+                  className={styles.est__img}
+                />
+                <h1 className={styles.est__tittle1}>{est.name}</h1>
 
-              <div className={styles.est__cardGroup1}>
-                <Card className={styles.est__card1}>
-                  <CardTitle className={styles.est__cardTittle}>
-                    <MdArticle className={styles.est__icons} />
-                    Descripción
-                  </CardTitle>
-                  <p className={styles.est__cardParagraph}>{est.description}</p>
-                </Card>
-                <div className={styles.est__cardGroup2}>
-                  <Card className={styles.est__card2}>
+                <div className={styles.est__cardGroup1}>
+                  <Card className={styles.est__card1}>
                     <CardTitle className={styles.est__cardTittle}>
-                      <GiKnifeFork className={styles.est__icons} />
-                      Menú
+                      <MdArticle className={styles.est__icons} />
+                      Descripción
                     </CardTitle>
                     <p className={styles.est__cardParagraph}>
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Tenetur sit doloribus voluptatibus! Et eius, officiis, in
-                      earum at optio aliquam voluptate consequatur rem iste
-                      consectetur cumque similique minus dolores reiciendis
-                      accusamus amet placeat tempore veniam. Dignissimos dicta,
-                      doloribus magnam suscipit molestiae totam rem quaerat
-                      nesciunt! Atque mollitia nam blanditiis amet.
+                      {est.description}
                     </p>
                   </Card>
-                  <Card className={styles.est__card2}>
-                    <CardTitle className={styles.est__cardTittle}>
-                      <MdAccountBalance className={styles.est__icons} />
-                      Información
-                    </CardTitle>
-                    <span className={styles.est__cardParagraph}>
-                      <MdLocationOn className={styles.est__icons} />
-                      {est.city}
-                    </span>
-                    <span className={styles.est__cardParagraph}>
-                      <MdOutlineMarkunreadMailbox
-                        className={styles.est__icons}
-                      />
-                      {est.address}
-                    </span>
-                    <span className={styles.est__cardParagraph}>
-                      <TbBrandAirtable className={styles.est__icons} />
-                      {est.type}
-                    </span>
-                    <span className={styles.est__cardParagraph}>
-                      <MdAccessTime className={styles.est__icons} />
-                      {est.Opening}
-                    </span>
-                    <span className={styles.est__cardParagraph}>
-                      <MdAccessTimeFilled className={styles.est__icons} />
-                      {est.Closing}
-                    </span>
-                    <span className={styles.est__cardParagraph}>
-                      <MdPhone className={styles.est__icons} />
-                      {est.telephone_number}
-                    </span>
-                  </Card>
+                  <div className={styles.est__cardGroup2}>
+                    <Card className={styles.est__card2}>
+                      <CardTitle className={styles.est__cardTittle}>
+                        <GiKnifeFork className={styles.est__icons} />
+                        Menú
+                      </CardTitle>
+                      <p className={styles.est__cardParagraph}>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Tenetur sit doloribus voluptatibus! Et eius, officiis,
+                        in earum at optio aliquam voluptate consequatur rem iste
+                        consectetur cumque similique minus dolores reiciendis
+                        accusamus amet placeat tempore veniam. Dignissimos
+                        dicta, doloribus magnam suscipit molestiae totam rem
+                        quaerat nesciunt! Atque mollitia nam blanditiis amet.
+                      </p>
+                    </Card>
+                    <Card className={styles.est__card2}>
+                      <CardTitle className={styles.est__cardTittle}>
+                        <MdAccountBalance className={styles.est__icons} />
+                        Información
+                      </CardTitle>
+                      <span className={styles.est__cardParagraph}>
+                        <MdLocationOn className={styles.est__icons} />
+                        {est.city}
+                      </span>
+                      <span className={styles.est__cardParagraph}>
+                        <MdOutlineMarkunreadMailbox
+                          className={styles.est__icons}
+                        />
+                        {est.address}
+                      </span>
+                      <span className={styles.est__cardParagraph}>
+                        <TbBrandAirtable className={styles.est__icons} />
+                        {est.type}
+                      </span>
+                      <span className={styles.est__cardParagraph}>
+                        <MdAccessTime className={styles.est__icons} />
+                        {est.Opening}
+                      </span>
+                      <span className={styles.est__cardParagraph}>
+                        <MdAccessTimeFilled className={styles.est__icons} />
+                        {est.Closing}
+                      </span>
+                      <span className={styles.est__cardParagraph}>
+                        <MdPhone className={styles.est__icons} />
+                        {est.telephone_number}
+                      </span>
+                    </Card>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div className={styles.est__stats}>
-            <Card className={styles.est__ratings__card}>
-              <h3 className={styles.est__tittle2}>Estadisticas</h3>
-              <div className={styles.est__ratings}>
-                <div>
-                  <h5 className={styles.est__tittle3}>Calificación</h5>
+            <div className={styles.est__stats}>
+              <Card className={styles.est__ratings__card}>
+                <h3 className={styles.est__tittle2}>Estadisticas</h3>
+                <div className={styles.est__ratings}>
+                  <div>
+                    <h5 className={styles.est__tittle3}>Calificación</h5>
+                    <div className={styles.est__card__items}>
+                      <MdCheck size={35} />
+                      <div>
+                        <Stars state={est.rating} />
+                        <p>{est.rating}</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div>
+                    <h5 className={styles.est__tittle3}>Internet</h5>
+                    <div className={styles.est__card__items}>
+                      <MdNetworkCheck size={35} />
+                      <div>
+                        <Stars state={est.internet_quality} />
+                        <p>{est.internet_quality}</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div>
+                    <h5 className={styles.est__tittle3}>Capacidad</h5>
+                    <div className={styles.est__card__items}>
+                      <MdOutlinePersonAddAlt size={35} />
+                      <p>{est.capacity}</p>
+                    </div>
+                  </div>
+                </div>
+              </Card>
+              <h5 className={(styles.est__tittle3, styles.est__final)}>
+                Reportes de la comunidad
+              </h5>
+              {isAuthenticated ? (
+                <Button onClick={toggle} className={styles.est__button}>
+                  Realizar un reporte
+                </Button>
+              ) : (
+                <h5 className={styles.est__tittle3}>
+                  Registrate para realiar un reporte
+                </h5>
+              )}
+
+              <Modal
+                isOpen={modal}
+                toggle={toggle}
+                className={styles.est__make__report}
+                contentClassName="bg-gradient-danger"
+              >
+                <ModalHeader toggle={toggle} className={styles.est__tittle3}>
+                  Dejanos tus opinones
+                </ModalHeader>
+                <ModalBody>
                   <div className={styles.est__card__items}>
                     <MdCheck size={35} />
                     <div>
-                      <Stars state={est.rating} />
-                      <p>{est.rating}</p>
+                      {stars.map((_, index) => {
+                        return (
+                          <FaStar
+                            key={index}
+                            size={20}
+                            color={
+                              rating_business > index
+                                ? colors.orange
+                                : colors.grey
+                            }
+                            onClick={() => {
+                              setRating_business(index + 1);
+                            }}
+                          />
+                        );
+                      })}
+                      <h5>Calificacion del lugar</h5>
                     </div>
                   </div>
-                </div>
-                <div>
-                  <h5 className={styles.est__tittle3}>Internet</h5>
                   <div className={styles.est__card__items}>
                     <MdNetworkCheck size={35} />
                     <div>
-                      <Stars state={est.internet_quality} />
-                      <p>{est.internet_quality}</p>
+                      {stars.map((_, index) => {
+                        return (
+                          <FaStar
+                            key={index}
+                            size={20}
+                            color={
+                              internet_status > index
+                                ? colors.orange
+                                : colors.grey
+                            }
+                            onClick={() => {
+                              setInternet_status(index + 1);
+                            }}
+                          />
+                        );
+                      })}
+                      <h5>Calificacion del internet</h5>
                     </div>
                   </div>
-                </div>
-                <div>
-                  <h5 className={styles.est__tittle3}>Capacidad</h5>
                   <div className={styles.est__card__items}>
                     <MdOutlinePersonAddAlt size={35} />
-                    <p>{est.capacity}</p>
+                    <div>
+                      {stars2.map((_, index) => {
+                        return (
+                          <FaStar
+                            key={index}
+                            size={20}
+                            color={
+                              occupation_status > index
+                                ? colors.orange
+                                : colors.grey
+                            }
+                            onClick={() => {
+                              setOccupation_status(index + 1);
+                            }}
+                          />
+                        );
+                      })}
+                      <h5>Que tan lleno esta el lugar</h5>
+                    </div>
                   </div>
-                </div>
-              </div>
-            </Card>
-            <h5 className={(styles.est__tittle3, styles.est__final)}>
-              Reportes de la comunidad
-            </h5>
-            {isAuthenticated ? (
-              <Button onClick={toggle} className={styles.est__button}>
-                Realizar un reporte
-              </Button>
-            ) : (
-              <h5 className={styles.est__tittle3}>
-                Registrate para realiar un reporte
-              </h5>
-            )}
+                  <InputGroup size="sm">
+                    <InputGroupText>Abc</InputGroupText>
+                    <Input
+                      type="textarea"
+                      className="make__input make__text__area"
+                      name="comments"
+                      placeholder="Dejanos tus comentarios"
+                      onChange={(e) => handleChange(e.target.value)}
+                    />
+                  </InputGroup>
+                </ModalBody>
+                <ModalFooter>
+                  <Button
+                    className={styles.est__button}
+                    onClick={() => {
+                      postReport();
+                    }}
+                  >
+                    Enviar reporte
+                  </Button>
+                </ModalFooter>
+              </Modal>
 
-            <Modal
-              isOpen={modal}
-              toggle={toggle}
-              className={styles.est__make__report}
-            >
-              <ModalHeader toggle={toggle} className={styles.est__tittle3}>
-                Dejanos tus opinones
-              </ModalHeader>
-              <ModalBody>
-                <div className={styles.est__card__items}>
-                  <MdCheck size={35} />
-                  <div>
-                    {stars.map((_, index) => {
-                      return (
-                        <FaStar
-                          key={index}
-                          size={20}
-                          color={
-                            rating_business > index
-                              ? colors.orange
-                              : colors.grey
-                          }
-                          onClick={() => {
-                            setRating_business(index + 1);
-                          }}
-                        />
-                      );
-                    })}
-                    <h5>Calificacion del lugar</h5>
-                  </div>
-                </div>
-                <div className={styles.est__card__items}>
-                  <MdNetworkCheck size={35} />
-                  <div>
-                    {stars.map((_, index) => {
-                      return (
-                        <FaStar
-                          key={index}
-                          size={20}
-                          color={
-                            internet_status > index
-                              ? colors.orange
-                              : colors.grey
-                          }
-                          onClick={() => {
-                            setInternet_status(index + 1);
-                          }}
-                        />
-                      );
-                    })}
-                    <h5>Calificacion del internet</h5>
-                  </div>
-                </div>
-                <div className={styles.est__card__items}>
-                  <MdOutlinePersonAddAlt size={35} />
-                  <div>
-                    {stars2.map((_, index) => {
-                      return (
-                        <FaStar
-                          key={index}
-                          size={20}
-                          color={
-                            occupation_status > index
-                              ? colors.orange
-                              : colors.grey
-                          }
-                          onClick={() => {
-                            setOccupation_status(index + 1);
-                          }}
-                        />
-                      );
-                    })}
-                    <h5>Que tan lleno esta el lugar</h5>
-                  </div>
-                </div>
-                <InputGroup size="sm">
-                  <InputGroupText>Abc</InputGroupText>
-                  <Input
-                    type="textarea"
-                    className="make__input make__text__area"
-                    name="comments"
-                    placeholder="Dejanos tus comentarios"
-                    onChange={(e) => handleChange(e.target.value)}
-                  />
-                </InputGroup>
-              </ModalBody>
-              <ModalFooter>
-                <Button
-                  className={styles.est__button}
-                  onClick={() => {
-                    postReport();
-                  }}
-                >
-                  Enviar reporte
-                </Button>
-              </ModalFooter>
-            </Modal>
-            <div className={styles.est__statsCardGroup}>
-              {reports ? (
-                reports.map((rep) => (
-                  <Card key={rep.id} className={styles.est__stastCard}>
-                    <span>
-                      Usuario: <span>{rep.user_id}</span>
-                    </span>
-                    <span>
-                      Calificacion: <span>{rep.rating_business}</span>
-                      <Stars state={rep.rating_business} />
-                    </span>
-                    <span>
-                      Internet: <span>{rep.internet_status}</span>
-                      <Stars state={rep.internet_status} />
-                    </span>
-                    <span>
-                      Comentario: <span>{rep.occupation_status}</span>
-                      <Stars state={rep.occupation_status} />
-                    </span>
-                  </Card>
-                ))
-              ) : (
-                <Loading />
-              )}
+              <div className={styles.est__statsCardGroup}>
+                {reports ? (
+                  reports.map((rep) => (
+                    <Card key={rep.id} className={styles.est__stastCard}>
+                      <span>
+                        Usuario: <span>{rep.user_id}</span>
+                      </span>
+                      <span>
+                        Calificacion: <span>{rep.rating_business}</span>
+                        <Stars state={rep.rating_business} />
+                      </span>
+                      <span>
+                        Internet: <span>{rep.internet_status}</span>
+                        <Stars state={rep.internet_status} />
+                      </span>
+                      <span>
+                        Comentario: <span>{rep.occupation_status}</span>
+                        <Stars state={rep.occupation_status} />
+                      </span>
+                    </Card>
+                  ))
+                ) : (
+                  <Loading />
+                )}
+              </div>
             </div>
-          </div>
-        </>
-      ) : (
-        <Loading />
-      )}
-    </div>
+          </>
+        ) : (
+          <Loading />
+        )}
+      </main>
+    </>
   );
 }
 
