@@ -37,3 +37,9 @@ export const setLogin = (data) => {
     .post("https://backenddig.herokuapp.com/api/users/", data)
     .then((res) => res.data);
 };
+
+export const setEstablishment = (data) => {
+  return axios
+    .post("https://backenddig.herokuapp.com/api/businesses/", data)
+    .then((res) => res.data);
+};
