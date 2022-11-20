@@ -12,8 +12,8 @@ function DigNavbar() {
   return (
     <div>
       <Navbar
-        color="black"
-        dark="True"
+        dark
+        color="dark"
         fixed="top"
         sticky="true"
         className={styles.nav__container}

@@ -24,16 +24,16 @@ export const setReport = ({ data }) => {
     .then((res) => console.log(res));
 };
 
-export const getLogin = ({ id }) => {
+export const getLogin = (id) => {
   return axios
-    .get(`https://backenddig.herokuapp.com/api/users/1/login`, {
-      params: { id: id },
+    .get("https://backenddig.herokuapp.com/api/users/1/login", {
+      params: { auth0_id: id },
     })
     .then((res) => res.data);
 };
 
-export const setLogin = ({ data }) => {
+export const setLogin = (data) => {
   return axios
     .post("https://backenddig.herokuapp.com/api/users/", data)
-    .then((res) => console.log(res));
+    .then((res) => res.data);
 };
