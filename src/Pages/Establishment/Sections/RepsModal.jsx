@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
 
 // Core
 import styles from "./Styles.module.css";
@@ -21,9 +20,7 @@ import {
 import { MdCheck, MdNetworkCheck, MdOutlinePersonAddAlt } from "react-icons/md";
 import { FaStar } from "react-icons/fa";
 
-function RepsModal({ modal, toggle, myUser }) {
-  const { id } = useParams();
-
+function RepsModal({ modal, toggle, myUser, id }) {
   // QualyStars
   const stars = Array(5).fill(0);
   const stars2 = Array(3).fill(0);
