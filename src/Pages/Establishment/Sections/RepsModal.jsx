@@ -144,7 +144,7 @@ function RepsModal({ modal, toggle, myUser, id }) {
               onClick={() => {
                 postReport();
                 toggle();
-                window.location.href(`/establishment/${id}`);
+                window.location.reload();
               }}
             >
               Enviar reporte
