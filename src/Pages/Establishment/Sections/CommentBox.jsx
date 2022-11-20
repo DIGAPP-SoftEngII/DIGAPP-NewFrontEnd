@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useReducer } from "react";
 import { useParams } from "react-router-dom";
 
 // Core
@@ -10,12 +10,12 @@ import { getReports } from "../../../Services/Api";
 // reactstrap
 import { Card } from "reactstrap";
 
-function CommentBox({ modal }) {
+function CommentBox({ ignored }) {
   // RenderReports
   const [reports, setReports] = useState([]);
   const { id } = useParams();
 
-  useEffect(() => {
+  const resderReps = () => {
     getReports().then((data) => {
       const reps = [];
       data.map((rep) => {
@@ -26,7 +26,11 @@ function CommentBox({ modal }) {
       });
       setReports(reps);
     });
-  }, [modal]);
+  };
+
+  useEffect(() => {
+    resderReps();
+  }, [ignored]);
 
   return (
     <>

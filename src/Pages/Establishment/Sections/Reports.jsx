@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useReducer } from "react";
 import { useParams } from "react-router-dom";
 
 // Core
@@ -14,6 +14,8 @@ import { Button } from "reactstrap";
 import { useAuth0 } from "@auth0/auth0-react";
 
 function Reports() {
+  const [ignored, forceUpdate] = useReducer((x) => x + 1, 0);
+
   const { id } = useParams();
 
   // Auth0
@@ -76,8 +78,14 @@ function Reports() {
               Registrate para realiar un reporte
             </h5>
           )}
-          <RepsModal toggle={toggle} modal={modal} myUser={myUser} id={id} />
-          <CommentBox toggle={modal} />
+          <RepsModal
+            toggle={toggle}
+            modal={modal}
+            myUser={myUser}
+            id={id}
+            forceUpdate={forceUpdate}
+          />
+          <CommentBox modal={modal} ignored={ignored} />
         </div>
       </main>
     </>

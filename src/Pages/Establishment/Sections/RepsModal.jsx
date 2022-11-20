@@ -20,7 +20,7 @@ import {
 import { MdCheck, MdNetworkCheck, MdOutlinePersonAddAlt } from "react-icons/md";
 import { FaStar } from "react-icons/fa";
 
-function RepsModal({ modal, toggle, myUser, id }) {
+function RepsModal({ modal, toggle, myUser, id, forceUpdate }) {
   // QualyStars
   const stars = Array(5).fill(0);
   const stars2 = Array(3).fill(0);
@@ -144,7 +144,8 @@ function RepsModal({ modal, toggle, myUser, id }) {
               onClick={() => {
                 postReport();
                 toggle();
-                window.location.reload();
+                forceUpdate();
+                //window.location.reload();
               }}
             >
               Enviar reporte
