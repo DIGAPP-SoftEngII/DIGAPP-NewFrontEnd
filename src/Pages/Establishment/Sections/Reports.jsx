@@ -13,9 +13,7 @@ import { Button } from "reactstrap";
 // Auth0
 import { useAuth0 } from "@auth0/auth0-react";
 
-function Reports() {
-  const [ignored, forceUpdate] = useReducer((x) => x + 1, 0);
-
+function Reports({ forceUpdate, ignored }) {
   const { id } = useParams();
 
   // Auth0
@@ -84,8 +82,9 @@ function Reports() {
             myUser={myUser}
             id={id}
             forceUpdate={forceUpdate}
+            ignored={ignored}
           />
-          <CommentBox modal={modal} ignored={ignored} />
+          <CommentBox toggle={modal} />
         </div>
       </main>
     </>

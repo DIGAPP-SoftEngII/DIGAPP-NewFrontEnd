@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useReducer } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 // Core
@@ -10,7 +10,7 @@ import { getReports } from "../../../Services/Api";
 // reactstrap
 import { Card } from "reactstrap";
 
-function CommentBox({ ignored }) {
+function CommentBox({ modal, ignored }) {
   // RenderReports
   const [reports, setReports] = useState([]);
   const { id } = useParams();
@@ -31,6 +31,10 @@ function CommentBox({ ignored }) {
   useEffect(() => {
     resderReps();
   }, [ignored]);
+
+  useEffect(() => {
+    resderReps();
+  }, [reports]);
 
   return (
     <>

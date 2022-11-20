@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 
 // Core
 import styles from "./Styles.module.css";
@@ -20,7 +20,7 @@ import {
 import { MdCheck, MdNetworkCheck, MdOutlinePersonAddAlt } from "react-icons/md";
 import { FaStar } from "react-icons/fa";
 
-function RepsModal({ modal, toggle, myUser, id, forceUpdate }) {
+function RepsModal({ modal, toggle, myUser, id, forceUpdate, ignored }) {
   // QualyStars
   const stars = Array(5).fill(0);
   const stars2 = Array(3).fill(0);
@@ -145,7 +145,6 @@ function RepsModal({ modal, toggle, myUser, id, forceUpdate }) {
                 postReport();
                 toggle();
                 forceUpdate();
-                //window.location.reload();
               }}
             >
               Enviar reporte
