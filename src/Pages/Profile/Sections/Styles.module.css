@@ -1,0 +1,39 @@
+/* Layout */
+.row {
+  display: grid;
+  grid-template-columns: 80% 20%;
+}
+
+.row__udpt {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  text-align: center;
+  align-items: center;
+}
+
+/* Cards */
+.card {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 40% 60%;
+}
+
+.card__header {
+  display: grid;
+  grid-template-columns: 70% 30%;
+}
+
+/* BUTTONS */
+.button2 {
+  background-color: rgba(3, 32, 51, 0.8);
+}
+
+/* ICONS */
+.button2:hover .delete__icon {
+  color: #ff7261;
+}
+
+/* Others */
+.link {
+  text-decoration: none;
+}

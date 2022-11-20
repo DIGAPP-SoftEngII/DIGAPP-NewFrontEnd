@@ -4,6 +4,9 @@ import React, { useState, useEffect } from "react";
 import styles from "./Styles.module.css";
 import { setReport } from "../../../Services/Api";
 
+// Universal Cookies
+import Cookies from "universal-cookie/cjs/Cookies";
+
 // reactstrap
 import {
   Modal,
@@ -20,7 +23,7 @@ import {
 import { MdCheck, MdNetworkCheck, MdOutlinePersonAddAlt } from "react-icons/md";
 import { FaStar } from "react-icons/fa";
 
-function RepsModal({ modal, toggle, myUser, id, forceUpdate, ignored }) {
+function RepsModal({ modal, toggle, id, forceUpdate, ignored }) {
   // QualyStars
   const stars = Array(5).fill(0);
   const stars2 = Array(3).fill(0);
@@ -38,7 +41,12 @@ function RepsModal({ modal, toggle, myUser, id, forceUpdate, ignored }) {
     setComments(value);
   };
 
+  // UserId
+  const cookies = new Cookies();
+
   const postReport = () => {
+    console.log(cookies.get("id"));
+
     const data = {
       rating_business,
       internet_status,
@@ -46,7 +54,7 @@ function RepsModal({ modal, toggle, myUser, id, forceUpdate, ignored }) {
       comments,
       report_support: 0,
       business_id: parseInt(id),
-      user_id: myUser.id,
+      user_id: cookies.get("id"),
     };
 
     setReport({ data })

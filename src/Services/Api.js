@@ -6,6 +6,18 @@ export const getEstablishments = () => {
     .then((res) => res.data);
 };
 
+export const setEstablishment = (data) => {
+  return axios
+    .post("https://backenddig.herokuapp.com/api/businesses/", data)
+    .then((res) => res.data);
+};
+
+export const deleteEstablishment = (id) => {
+  return axios
+    .delete(`https://backenddig.herokuapp.com/api/businesses/${id}`)
+    .then((res) => res.data);
+};
+
 export const getEstablishment = ({ id }) => {
   return axios
     .get(`https://backenddig.herokuapp.com/api/businesses/${id}`)
@@ -35,11 +47,5 @@ export const getLogin = (id) => {
 export const setLogin = (data) => {
   return axios
     .post("https://backenddig.herokuapp.com/api/users/", data)
-    .then((res) => res.data);
-};
-
-export const setEstablishment = (data) => {
-  return axios
-    .post("https://backenddig.herokuapp.com/api/businesses/", data)
     .then((res) => res.data);
 };

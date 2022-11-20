@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import BlackLogo from "../../assets/img/BlackLogo.svg";
 import img2 from "../../assets/img/image9.jpg";
 import img1 from "../../assets/img/ramita.svg";
@@ -7,8 +7,45 @@ import { Container, Row, Col, Card, Badge, CardBody, Button } from "reactstrap";
 import { Link } from "react-router-dom";
 import { FaRegClock } from "react-icons/fa";
 import DigNavbar from "../../Components/DigNavbar/DigNavbar";
+import { getLogin, setLogin } from "../../Services/Api";
+import { useAuth0 } from "@auth0/auth0-react";
+import Cookies from "universal-cookie";
 
 function Home() {
+  const { isAuthenticated, isLoading, user } = useAuth0();
+  const cookies = new Cookies();
+
+  const deleteCookies = () => {
+    cookies.remove("id", { path: "/" });
+    console.log("Anyone is logued");
+  };
+
+  // Verify User on Our DB
+  const verifyUser = () => {
+    isLoading
+      ? console.log("LoadingUser...")
+      : isAuthenticated
+      ? getLogin(user.sub.split("|")[1]).then((res) => {
+          if (res != 0) {
+            cookies.set("id", res[0].id, { path: "/" });
+          } else {
+            setLogin({
+              password: "1234567ABC",
+              username: String(user.name),
+              email: String(user.email),
+              auth0_id: String(user.sub.split("|")[1]),
+            }).then((res) => {
+              cookies.set("id", res[0].id, { path: "/" });
+            });
+          }
+        })
+      : deleteCookies();
+  };
+
+  useEffect(() => {
+    verifyUser();
+  }, [isLoading]);
+
   return (
     <>
       <DigNavbar />

@@ -25,6 +25,7 @@ import {
 import { MdOutlineAdd } from "react-icons/md";
 import CEModal from "./Sections/CEModal";
 import PersonalData from "./Sections/PersonalData";
+import UserEsts from "./Sections/UserEsts";
 
 function Profile() {
   //MakingAnEstablishment
@@ -57,6 +58,7 @@ function Profile() {
                 <CEModal toggle={toggle} modal={modal} />
               </Container>
             </section>
+            <UserEsts />
           </>
         )}
       </main>

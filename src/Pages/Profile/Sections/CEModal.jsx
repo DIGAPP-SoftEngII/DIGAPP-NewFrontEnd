@@ -4,6 +4,9 @@ import React, { useState } from "react";
 import { uploadFile } from "../../../Services/firebase";
 import { setEstablishment } from "../../../Services/Api";
 
+// Universal Cookies
+import Cookies from "universal-cookie";
+
 // reactstrap
 import {
   Modal,
@@ -18,6 +21,9 @@ import {
 } from "reactstrap";
 
 function CEModal({ modal, toggle }) {
+  // Universal Cookies
+  const cookies = new Cookies();
+
   // MakeAnEstablishmemnt
   const [name, setName] = useState("");
   const [opening, setOpening] = useState("");
@@ -84,8 +90,8 @@ function CEModal({ modal, toggle }) {
       description: desc,
       cover_picture: image,
       city: city,
+      user_id: parseInt(cookies.get("id")),
     };
-
     setEstablishment(est);
   };
 
