@@ -3,7 +3,6 @@ import React, { useEffect } from "react";
 // Core
 import BlackLogo from "../../assets/img/BlackLogo.svg";
 import img1 from "../../assets/img/ramita.svg";
-import img2 from "../../assets/img/image7.jpg";
 import DigNavbar from "../../Components/DigNavbar/DigNavbar";
 import { getLogin, setLogin } from "../../Services/Api";
 import styles from "./Home.module.css";
@@ -27,7 +26,6 @@ import Cookies from "universal-cookie";
 import { useAuth0 } from "@auth0/auth0-react";
 
 //react-icons
-import { Link } from "react-router-dom";
 import { FaRegClock } from "react-icons/fa";
 import { FiCoffee } from "react-icons/fi";
 import { TbBrandAirtable } from "react-icons/tb";
@@ -45,12 +43,12 @@ function Home() {
   };
 
   // Verify User on Our DB
-  const verifyUser = () => {
+  useEffect(() => {
     isLoading
       ? console.log("LoadingUser...")
       : isAuthenticated
       ? getLogin(user.sub.split("|")[1]).then((res) => {
-          if (res != 0) {
+          if (res !== 0) {
             cookies.set("id", res[0].id, { path: "/" });
           } else {
             setLogin({
@@ -64,11 +62,6 @@ function Home() {
           }
         })
       : deleteCookies();
-  };
-
-  // Efects
-  useEffect(() => {
-    verifyUser();
   }, [isLoading]);
 
   return (
@@ -130,7 +123,7 @@ function Home() {
         </section>
         <section className="row justify-content-center ">
           <Container className="row justify-content-center">
-            <Card className={styles.card__section4} height="200">
+            <Card className={styles.card__section4}>
               <CardImg
                 alt="Card image cap2"
                 src="https://firebasestorage.googleapis.com/v0/b/digapp-b8984.appspot.com/o/72de1097-a93b-4a7d-86c1-5e89815c2ac0?alt=media&token=2052f8de-73e8-432f-97d6-6b450750cfdd"
@@ -149,7 +142,7 @@ function Home() {
         </section>
         <section className="row justify-content-center pb-5 mt-5">
           <Container className="row justify-content-center mb-5 mt-5">
-            <Card className={styles.card__section4} height="200">
+            <Card className={styles.card__section4}>
               <CardImg
                 alt="Card image cap1"
                 src="https://firebasestorage.googleapis.com/v0/b/digapp-b8984.appspot.com/o/image5.jpg?alt=media&token=5536b72b-6237-46b9-bb83-f4ad70ddde90"

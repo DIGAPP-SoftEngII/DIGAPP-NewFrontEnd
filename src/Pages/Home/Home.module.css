@@ -50,7 +50,6 @@
 }
 
 .card__section4 {
-  width: 80%;
   height: 200px;
   margin: -30px;
   background: none;
@@ -62,6 +61,7 @@
   height: 200px;
   object-fit: cover;
   overflow: hidden;
+  background: none;
 }
 
 .section4__text {
