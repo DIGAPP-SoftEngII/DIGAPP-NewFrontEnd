@@ -49,13 +49,6 @@
   color: #ff7261;
 }
 
-hr {
-  background-color: rgba(3, 32, 51, 0.8);
-  border: 2px solid rgba(3, 32, 51, 0.8);
-  border-radius: 5px;
-  margin: 0px 70px;
-}
-
 .card__section4 {
   height: 200px;
   padding: 0;

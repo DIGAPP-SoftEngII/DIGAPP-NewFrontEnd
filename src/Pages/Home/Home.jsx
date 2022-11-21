@@ -92,7 +92,7 @@ function Home() {
                 <Col xs="6">
                   <p className={styles.hero__text}>
                     <span className={styles.hero__text1}>Encuentra</span> el
-                    lugar que buscas con actualizaciones en{" "}
+                    lugar ideal para trabajar, con actualizaciones en{" "}
                     <span className={styles.hero__text2}>tiempo real</span>
                     {"  "}
                     <FaRegClock />
