@@ -4,6 +4,7 @@ import Establishments from "./Pages/Establishments/Establishments";
 import Establishment from "./Pages/Establishment/Establishment";
 import Profile from "./Pages/Profile/Profile";
 import styles from "./App.module.css";
+import NotFound from "./Pages/NotFound/NotFound";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Route exact path="/establishments" element={<Establishments />} />
         <Route exact path="/establishment/:id" element={<Establishment />} />
         <Route exact path="/profile" element={<Profile />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </main>
   );
