@@ -136,6 +136,11 @@
   grid-template-columns: 20% 80%;
 }
 
+/* OTHERS */
+.divider {
+  width: 70%;
+}
+
 @media screen and (max-width: 1200px) {
 }
 @media screen and (max-width: 992px) {
@@ -151,16 +156,25 @@
   }
   .reps__cg {
     display: grid;
-    grid-template-columns: 100%;
+    grid-template-columns: 50% 50%;
   }
-  .stats__ratings {
-    display: grid;
-    grid-template-columns: 100%;
+
+  .tittle2 {
+    font-size: 1.5rem;
+    color: rgba(3, 32, 51, 0.8);
   }
 }
 @media screen and (max-width: 576px) {
   .header__tittle {
     margin: 50px;
     font-size: 2.5rem;
+  }
+  .stats__ratings {
+    display: grid;
+    grid-template-columns: 100%;
+  }
+  .reps__cg {
+    display: grid;
+    grid-template-columns: 100%;
   }
 }

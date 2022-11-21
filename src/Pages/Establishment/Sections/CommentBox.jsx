@@ -39,8 +39,8 @@ function CommentBox({ modal, ignored }) {
   return (
     <>
       <main>
-        <section className="row justify-content-center mt-5">
-          <Container className="row justify-content-center">
+        <section className="row justify-content-center mt-5 pb-5">
+          <Container className="row justify-content-center mb-5">
             <h1 className={styles.tittle2}> Comentarios de la comunidad</h1>
             <div className={styles.reps__cg}>
               {reports ? (

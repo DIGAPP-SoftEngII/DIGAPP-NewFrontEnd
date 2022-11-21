@@ -74,8 +74,13 @@ function Information({ forceUpdate, ignored, est }) {
             </div>
           </Container>
         </section>
-        <section>
-          <Container>
+        <section className="row justify-content-center mt-5">
+          <Container className="row justify-content-center mt-3">
+            <hr className={styles.divider} />
+          </Container>
+        </section>
+        <section className="row justify-content-center">
+          <Container className="row justify-content-center">
             <CommentBox toggle={repsToggle} />
           </Container>
         </section>

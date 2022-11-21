@@ -16,6 +16,11 @@ function Stats({ est }) {
       <main>
         <section className="row justify-content-center mt-5">
           <Container className="row justify-content-center">
+            <hr className={styles.divider} />
+          </Container>
+        </section>
+        <section className="row justify-content-center mt-5">
+          <Container className="row justify-content-center">
             <Card className={styles.card}>
               <div className={styles.stats__ratings}>
                 <div>
