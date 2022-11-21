@@ -3,21 +3,18 @@
   margin: auto;
   margin-top: 50px;
   text-align: center;
-  border: solid red;
 }
 
 .tittle {
   font-size: 3.2rem;
   padding: 40px;
   color: rgba(3, 32, 51, 0.8);
-  border: solid red;
 }
 
 .content {
   max-width: 90%;
   display: grid;
   grid-template-columns: 33% 33% 33%;
-  border: solid red;
 }
 
 .card {
