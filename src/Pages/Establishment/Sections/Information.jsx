@@ -1,82 +1,84 @@
-import React from "react";
+import React, { useState } from "react";
+import { useParams } from "react-router-dom";
 import styles from "./Styles.module.css";
 
+// Core
+import MenuModal from "./MenuModal";
+import InfoModal from "./InfoModal";
+import RepsModal from "./RepsModal";
+import CommentBox from "./CommentBox";
+
 //reactstrap
-import { Card, CardTitle } from "reactstrap";
+import { Container, Button } from "reactstrap";
 
 //react-icons
 import { GiKnifeFork } from "react-icons/gi";
-import { TbBrandAirtable } from "react-icons/tb";
-import {
-  MdPhone,
-  MdLocationOn,
-  MdOutlineMarkunreadMailbox,
-  MdAccessTime,
-  MdAccessTimeFilled,
-  MdAccountBalance,
-  MdArticle,
-} from "react-icons/md";
+import { MdAccountBalance, MdOutlineAdd } from "react-icons/md";
 
-function Information({ est }) {
+function Information({ forceUpdate, ignored, est }) {
+  const { id } = useParams();
+
+  const [menuModal, setMenuModal] = useState(false);
+  const menuToggle = () => {
+    setMenuModal(!menuModal);
+  };
+  const [infoModal, setInfoModal] = useState(false);
+  const infoToggle = () => {
+    setInfoModal(!infoModal);
+  };
+  const [repsModal, setRepsModal] = useState(false);
+  const repsToggle = () => {
+    setRepsModal(!repsModal);
+  };
+
   return (
     <>
       <main>
-        <div className={styles.info__cg1}>
-          <Card className={styles.info__card1}>
-            <CardTitle className={styles.info__cardTittle}>
-              <MdArticle className={styles.info__icons} />
-              Descripción
-            </CardTitle>
-            <p className={styles.info__cardParagraph}>{est.description}</p>
-          </Card>
-          <div className={styles.info__cg2}>
-            <Card className={styles.info__card2}>
-              <CardTitle className={styles.info__cardTittle}>
-                <GiKnifeFork className={styles.info__icons} />
-                Menú
-              </CardTitle>
-              <p className={styles.info__cardParagraph}>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur
-                sit doloribus voluptatibus! Et eius, officiis, in earum at optio
-                aliquam voluptate consequatur rem iste consectetur cumque
-                similique minus dolores reiciendis accusamus amet placeat
-                tempore veniam. Dignissimos dicta, doloribus magnam suscipit
-                molestiae totam rem quaerat nesciunt! Atque mollitia nam
-                blanditiis amet.
-              </p>
-            </Card>
-            <Card className={styles.info__card2}>
-              <CardTitle className={styles.info__cardTittle}>
-                <MdAccountBalance className={styles.info__icons} />
-                Información
-              </CardTitle>
-              <span className={styles.info__cardParagraph}>
-                <MdLocationOn className={styles.info__icons} />
-                {est.city}
-              </span>
-              <span className={styles.info__cardParagraph}>
-                <MdOutlineMarkunreadMailbox className={styles.info__icons} />
-                {est.address}
-              </span>
-              <span className={styles.info__cardParagraph}>
-                <TbBrandAirtable className={styles.info__icons} />
-                {est.type}
-              </span>
-              <span className={styles.info__cardParagraph}>
-                <MdAccessTime className={styles.info__icons} />
-                {est.Opening}
-              </span>
-              <span className={styles.info__cardParagraph}>
-                <MdAccessTimeFilled className={styles.info__icons} />
-                {est.Closing}
-              </span>
-              <span className={styles.info__cardParagraph}>
-                <MdPhone className={styles.info__icons} />
-                {est.telephone_number}
-              </span>
-            </Card>
-          </div>
-        </div>
+        <section className="row justify-content-center">
+          <Container className="row justify-content-center">
+            <div className={styles.buttons}>
+              <div className={styles.sec__button}>
+                <Button className={styles.button} onClick={menuToggle}>
+                  <GiKnifeFork className={styles.info__icons} />
+                  Menú
+                </Button>
+                <MenuModal
+                  menuModal={menuModal}
+                  menuToggle={menuToggle}
+                  est={est}
+                />
+              </div>
+              <div className={styles.sec__button}>
+                <Button className={styles.button} onClick={infoToggle}>
+                  <MdAccountBalance className={styles.info__icons} />
+                  Más Información
+                </Button>
+                <InfoModal
+                  infoModal={infoModal}
+                  infoToggle={infoToggle}
+                  est={est}
+                />
+              </div>
+              <div className={styles.sec__button}>
+                <Button className={styles.button} onClick={repsToggle}>
+                  Reportar <MdOutlineAdd />
+                </Button>
+                <RepsModal
+                  repsToggle={repsToggle}
+                  repsModal={repsModal}
+                  id={id}
+                  forceUpdate={forceUpdate}
+                  ignored={ignored}
+                />
+              </div>
+            </div>
+          </Container>
+        </section>
+        <section>
+          <Container>
+            <CommentBox toggle={repsToggle} />
+          </Container>
+        </section>
       </main>
     </>
   );

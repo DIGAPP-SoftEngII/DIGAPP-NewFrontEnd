@@ -8,8 +8,9 @@ import { getEstablishment } from "../../Services/Api";
 import Header from "./Sections/Header";
 import Information from "./Sections/Information";
 import Stats from "./Sections/Stats";
-import Reports from "./Sections/Reports";
+
 import Loading from "../../Components/Loading/Loading";
+import { Container } from "reactstrap";
 
 function Establishment() {
   const [ignored, forceUpdate] = useReducer((x) => x + 1, 0);
@@ -30,14 +31,25 @@ function Establishment() {
       <main className={styles.main}>
         {est ? (
           <>
-            <div className={styles.est__info}>
-              <div className={styles.est__container}>
-                <Header img={est.cover_picture} tittle={est.name} />
-                <Information est={est} />
+            <section className="row justify-content-center">
+              <Container className="row justify-content-center">
+                <Header est={est} />
+              </Container>
+            </section>
+            <section className="row justify-content-center">
+              <Container className="row justify-content-center mb-5">
                 <Stats est={est} />
-                <Reports forceUpdate={forceUpdate} ignored={ignored} />
-              </div>
-            </div>
+              </Container>
+            </section>
+            <section className="row justify-content-center">
+              <Container className="row justify-content-center">
+                <Information
+                  forceUpdate={forceUpdate}
+                  ignored={ignored}
+                  est={est}
+                />
+              </Container>
+            </section>
           </>
         ) : (
           <Loading />

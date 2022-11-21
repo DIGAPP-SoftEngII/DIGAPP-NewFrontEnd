@@ -23,7 +23,7 @@ import {
 import { MdCheck, MdNetworkCheck, MdOutlinePersonAddAlt } from "react-icons/md";
 import { FaStar } from "react-icons/fa";
 
-function RepsModal({ modal, toggle, id, forceUpdate, ignored }) {
+function RepsModal({ repsModal, repsToggle, id, forceUpdate, ignored }) {
   // QualyStars
   const stars = Array(5).fill(0);
   const stars2 = Array(3).fill(0);
@@ -66,14 +66,13 @@ function RepsModal({ modal, toggle, id, forceUpdate, ignored }) {
     <>
       <main>
         <Modal
-          isOpen={modal}
-          toggle={toggle}
+          isOpen={repsModal}
+          toggle={repsToggle}
           contentClassName="bg-gradient-danger"
         >
-          <ModalHeader toggle={toggle} className={styles.tittle3}>
+          <ModalHeader toggle={repsToggle} className={styles.tittle3}>
             Dejanos tus opinones
           </ModalHeader>
-
           <ModalBody>
             <div className={styles.card__items}>
               <MdCheck size={35} />
@@ -151,7 +150,7 @@ function RepsModal({ modal, toggle, id, forceUpdate, ignored }) {
               className={styles.button}
               onClick={() => {
                 postReport();
-                toggle();
+                repsToggle();
                 forceUpdate();
               }}
             >
