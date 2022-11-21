@@ -1,20 +1,44 @@
 import React, { useEffect } from "react";
+
+// Core
 import BlackLogo from "../../assets/img/BlackLogo.svg";
-import img2 from "../../assets/img/image9.jpg";
 import img1 from "../../assets/img/ramita.svg";
-import styles from "./Home.module.css";
-import { Container, Row, Col, Card, Badge, CardBody, Button } from "reactstrap";
-import { Link } from "react-router-dom";
-import { FaRegClock } from "react-icons/fa";
+import img2 from "../../assets/img/image7.jpg";
 import DigNavbar from "../../Components/DigNavbar/DigNavbar";
 import { getLogin, setLogin } from "../../Services/Api";
-import { useAuth0 } from "@auth0/auth0-react";
+import styles from "./Home.module.css";
+
+// reactstrap
+import {
+  Container,
+  Row,
+  Col,
+  Card,
+  CardImg,
+  CardImgOverlay,
+  CardTitle,
+  CardText,
+} from "reactstrap";
+
+// cookies
 import Cookies from "universal-cookie";
 
+// Auth0
+import { useAuth0 } from "@auth0/auth0-react";
+
+// react-icons
+import { Link } from "react-router-dom";
+import { FaRegClock } from "react-icons/fa";
+import { FiCoffee } from "react-icons/fi";
+import { TbBrandAirtable } from "react-icons/tb";
+
 function Home() {
+  // Auth0
   const { isAuthenticated, isLoading, user } = useAuth0();
+  // universal cookies
   const cookies = new Cookies();
 
+  // Delete cookies
   const deleteCookies = () => {
     cookies.remove("id", { path: "/" });
     console.log("Anyone is logued");
@@ -42,6 +66,7 @@ function Home() {
       : deleteCookies();
   };
 
+  // Efects
   useEffect(() => {
     verifyUser();
   }, [isLoading]);
@@ -50,16 +75,15 @@ function Home() {
     <>
       <DigNavbar />
       <main className={styles.main}>
-        <section className="section section-lg pt-0">
-          <Container className="fluid">
+        <section className="row justify-content-center">
+          <Container className="row justify-content-center">
             <div className={styles.main__logo}>
-              <img src={BlackLogo} />
+              <img src={BlackLogo} className={styles.main__logo__img} />
             </div>
-            <hr />
           </Container>
         </section>
-        <section className="section section-lg pt-0">
-          <Container className="fluid">
+        <section className="row justify-content-center mb-5">
+          <Container className="row justify-content-center mb-5">
             <div className={styles.hero1}>
               <Row>
                 <Col xs="3">
@@ -81,133 +105,64 @@ function Home() {
             </div>
           </Container>
         </section>
-        <div className={styles.space} />
-        <div className={styles.space} />
-        <div className={styles.space} />
-        <section className="section section-lg pt-0">
-          <Container>
-            <Card className={styles.card}>
-              <div className="p-5">
-                <Row className="align-items-center">
-                  <Col lg="8">
-                    <h3 className="text-black">
-                      CAFÉS Y COWORKINGS A TU GUSTO !
-                    </h3>
-                    <p className="lead text-black mt-3">
-                      I will be the leader of a company that ends up being worth
-                      billions of dollars, because I got the answers. I
-                      understand culture.
-                    </p>
-                  </Col>
-                  <Col className="ml-lg-auto" lg="3">
-                    <Link className={styles.btn} to="/establishments">
-                      <Button
-                        block
-                        className="btn-white"
-                        color="default"
-                        size="md"
-                      >
-                        Ver Establecimientos
-                      </Button>
-                    </Link>
-                  </Col>
-                </Row>
+        <section className="row justify-content-center mt-5">
+          <Container className="row justify-content-center mt-5">
+            <hr className={styles.divider} />
+          </Container>
+        </section>
+        <section className="row jusrify-content-center">
+          <Container clasname="row jusrify-content-center">
+            <div className={styles.section2}>
+              <div>
+                <FiCoffee size={60} className={styles.section2__icons} />
+                <h5>Cafés</h5>
               </div>
+              <div>
+                <TbBrandAirtable size={60} className={styles.section2__icons} />
+                <h5>Coworkings</h5>
+              </div>
+            </div>
+          </Container>
+        </section>
+        <section className="row justify-content-center ">
+          <Container className="row justify-content-center">
+            <Card className={styles.card__section4} height="200">
+              <CardImg
+                alt="Card image cap"
+                src="https://firebasestorage.googleapis.com/v0/b/digapp-b8984.appspot.com/o/image4.jpg?alt=media&token=94494680-2128-4e3b-af56-4bce6a172d3d"
+                width="100%"
+                className={styles.section4__img}
+              />
+              <CardImgOverlay>
+                <CardTitle tag="h5" className={styles.section4__text}>
+                  ¡ Explora nuestros espacios !
+                </CardTitle>
+                <CardText className={styles.section4__text}>
+                  De seguro encuentras algo a tu gusto.
+                </CardText>
+              </CardImgOverlay>
             </Card>
           </Container>
         </section>
-        <div className={styles.space}></div>
-        <section className="section pb-0 bg-gradient-warning">
-          <Container>
-            <Row className="row-grid align-items-center">
-              <Col className="order-lg-2 ml-lg-auto" md="6">
-                <div className="position-relative pl-md-5">
-                  <img alt="..." className="img-center img-fluid" src={img2} />
-                </div>
-              </Col>
-              <Col className="order-lg-1" lg="6">
-                <div className="d-flex px-3">
-                  <div>
-                    <div className="icon icon-lg icon-shape bg-gradient-white shadow rounded-circle text-primary">
-                      <i className="ni ni-building text-primary" />
-                    </div>
-                  </div>
-                  <div className="pl-4">
-                    <img src={BlackLogo} />
-                    <p className="text-white">
-                      Una aplicación donde encontraras los mejores cafés y
-                      coworkings que se acomoden a tu gusto.
-                    </p>
-                  </div>
-                </div>
-                <Card className="shadow shadow-lg--hover mt-5">
-                  <CardBody>
-                    <div className="d-flex px-3">
-                      <div>
-                        <div className="icon icon-shape bg-gradient-success rounded-circle text-white">
-                          <i className="ni ni-satisfied" />
-                        </div>
-                      </div>
-                      <div className="pl-4">
-                        <h5 className="title text-success">Awesome Support</h5>
-                        <p>
-                          The Arctic Ocean freezes every winter and much of the
-                          sea-ice then thaws every summer, and that process will
-                          continue whatever.
-                        </p>
-                        <a
-                          className="text-success"
-                          href="#pablo"
-                          onClick={(e) => e.preventDefault()}
-                        >
-                          Learn more
-                        </a>
-                      </div>
-                    </div>
-                  </CardBody>
-                </Card>
-                <Card className="shadow shadow-lg--hover mt-5">
-                  <CardBody>
-                    <div className="d-flex px-3">
-                      <div>
-                        <div className="icon icon-shape bg-gradient-warning rounded-circle text-white">
-                          <i className="ni ni-active-40" />
-                        </div>
-                      </div>
-                      <div className="pl-4">
-                        <h5 className="title text-warning">
-                          Modular Components
-                        </h5>
-                        <p>
-                          The Arctic Ocean freezes every winter and much of the
-                          sea-ice then thaws every summer, and that process will
-                          continue whatever.
-                        </p>
-                        <a
-                          className="text-warning"
-                          href="#pablo"
-                          onClick={(e) => e.preventDefault()}
-                        >
-                          Learn more
-                        </a>
-                      </div>
-                    </div>
-                  </CardBody>
-                </Card>
-              </Col>
-            </Row>
+        <section className="row justify-content-center pb-5 mt-5">
+          <Container className="row justify-content-center mb-5 mt-5">
+            <Card className={styles.card__section4} height="200">
+              <CardImg
+                alt="Card image cap"
+                src="https://firebasestorage.googleapis.com/v0/b/digapp-b8984.appspot.com/o/image7.jpg?alt=media&token=391fbadc-89d8-4925-a385-d3d2ddbc8127"
+                width="100%"
+                className={styles.section4__img}
+              />
+              <CardImgOverlay className={styles.overlay}>
+                <CardTitle tag="h5" className={styles.section4__text}>
+                  ¡ Explora nuestros espacios !
+                </CardTitle>
+                <CardText className={styles.section4__text}>
+                  De seguro encuentras algo a tu gusto.
+                </CardText>
+              </CardImgOverlay>
+            </Card>
           </Container>
-          {/* SVG separator */}
-          <div className="separator separator-bottom separator-skew zindex-100">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              preserveAspectRatio="none"
-              version="1.1"
-              viewBox="0 0 2560 100"
-              x="0"
-              y="0"
-            ></svg>
-          </div>
         </section>
       </main>
     </>
