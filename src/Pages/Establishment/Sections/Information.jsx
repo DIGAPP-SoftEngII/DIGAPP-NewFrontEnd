@@ -11,11 +11,16 @@ import CommentBox from "./CommentBox";
 //reactstrap
 import { Container, Button } from "reactstrap";
 
+// Auth0
+import { useAuth0 } from "@auth0/auth0-react";
+
 //react-icons
 import { GiKnifeFork } from "react-icons/gi";
 import { MdAccountBalance, MdOutlineAdd } from "react-icons/md";
 
 function Information({ forceUpdate, ignored, est }) {
+  const { isAuthenticated, isLoading } = useAuth0();
+
   const { id } = useParams();
 
   const [menuModal, setMenuModal] = useState(false);
@@ -28,7 +33,11 @@ function Information({ forceUpdate, ignored, est }) {
   };
   const [repsModal, setRepsModal] = useState(false);
   const repsToggle = () => {
-    setRepsModal(!repsModal);
+    isLoading
+      ? console.log("LoadingUser...")
+      : isAuthenticated
+      ? setRepsModal(!repsModal)
+      : alert("Por favor Inicia sesion para dejar tu comentario !!!");
   };
 
   return (
