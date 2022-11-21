@@ -26,7 +26,7 @@ import Cookies from "universal-cookie";
 // Auth0
 import { useAuth0 } from "@auth0/auth0-react";
 
-// react-icons
+//react-icons
 import { Link } from "react-router-dom";
 import { FaRegClock } from "react-icons/fa";
 import { FiCoffee } from "react-icons/fi";
