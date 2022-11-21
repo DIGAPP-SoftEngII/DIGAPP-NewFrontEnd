@@ -9,15 +9,15 @@
   text-align: center;
 }
 
-h1 {
+.nf__tittle {
   margin-bottom: 20px;
 }
 
-span {
+.nf__text {
   color: #ff7261;
 }
 
-img {
+.nf__logo {
   text-align: center;
   margin-bottom: -200px;
 }
@@ -25,32 +25,33 @@ img {
 @media screen and (max-width: 1200px) {
   .main {
     width: 80%;
+    height: 93vh;
     margin: auto;
   }
 }
 @media screen and (max-width: 992px) {
   .main {
-    width: 100%;
+    width: 94%;
     margin: auto;
   }
 }
 @media screen and (max-width: 768px) {
   .main {
-    width: 100%;
+    width: 94%;
     margin: auto;
   }
 }
 
 @media screen and (max-width: 576px) {
   .main {
-    width: 100%;
+    width: 94%;
     margin: auto;
   }
-  img {
+  nf__logo {
     width: 70%;
     margin-bottom: -100px;
   }
-  h1 {
+  nf__tittle {
     font-size: 1.5rem;
   }
 }

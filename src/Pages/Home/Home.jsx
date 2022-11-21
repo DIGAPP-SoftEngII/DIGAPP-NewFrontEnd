@@ -78,7 +78,11 @@ function Home() {
         <section className="row justify-content-center">
           <Container className="row justify-content-center">
             <div className={styles.main__logo}>
-              <img src={BlackLogo} className={styles.main__logo__img} />
+              <img
+                alt="img1"
+                src={BlackLogo}
+                className={styles.main__logo__img}
+              />
             </div>
           </Container>
         </section>
@@ -87,7 +91,7 @@ function Home() {
             <div className={styles.hero1}>
               <Row>
                 <Col xs="3">
-                  <img src={img1} className={styles.hero1__img} />
+                  <img alt="img2" src={img1} className={styles.hero1__img} />
                 </Col>
                 <Col xs="6">
                   <p className={styles.hero__text}>
@@ -99,7 +103,7 @@ function Home() {
                   </p>
                 </Col>
                 <Col xs="3">
-                  <img src={img1} className={styles.hero1__img} />
+                  <img alt="img3" src={img1} className={styles.hero1__img} />
                 </Col>
               </Row>
             </div>
@@ -128,9 +132,8 @@ function Home() {
           <Container className="row justify-content-center">
             <Card className={styles.card__section4} height="200">
               <CardImg
-                alt="Card image cap"
-                src="https://firebasestorage.googleapis.com/v0/b/digapp-b8984.appspot.com/o/image4.jpg?alt=media&token=94494680-2128-4e3b-af56-4bce6a172d3d"
-                width="100%"
+                alt="Card image cap2"
+                src="https://firebasestorage.googleapis.com/v0/b/digapp-b8984.appspot.com/o/72de1097-a93b-4a7d-86c1-5e89815c2ac0?alt=media&token=2052f8de-73e8-432f-97d6-6b450750cfdd"
                 className={styles.section4__img}
               />
               <CardImgOverlay>
@@ -148,9 +151,8 @@ function Home() {
           <Container className="row justify-content-center mb-5 mt-5">
             <Card className={styles.card__section4} height="200">
               <CardImg
-                alt="Card image cap"
-                src="https://firebasestorage.googleapis.com/v0/b/digapp-b8984.appspot.com/o/image7.jpg?alt=media&token=391fbadc-89d8-4925-a385-d3d2ddbc8127"
-                width="100%"
+                alt="Card image cap1"
+                src="https://firebasestorage.googleapis.com/v0/b/digapp-b8984.appspot.com/o/image5.jpg?alt=media&token=5536b72b-6237-46b9-bb83-f4ad70ddde90"
                 className={styles.section4__img}
               />
               <CardImgOverlay className={styles.overlay}>
