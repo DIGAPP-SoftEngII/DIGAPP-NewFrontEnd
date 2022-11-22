@@ -13,6 +13,7 @@ import { Card, CardBody, Container, Row, Col, Badge, Button } from "reactstrap";
 
 // react-icons
 import { MdNetworkCheck, MdCheck } from "react-icons/md";
+import DigFooter from "../../Components/DigFooter/DigFooter";
 
 function Establishments() {
   const [establishments, setEstablishments] = useState();
@@ -90,6 +91,7 @@ function Establishments() {
           </Container>
         </section>
       </main>
+      <DigFooter />
     </>
   );
 }

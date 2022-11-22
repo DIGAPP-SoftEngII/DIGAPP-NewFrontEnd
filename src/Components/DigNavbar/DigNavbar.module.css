@@ -1,9 +1,3 @@
-.nav__logo:hover {
-  color: #ff7261;
-  transition: 200ms;
-  cursor: pointer;
-}
-
 .nav__list {
   display: flex;
   justify-content: space-between;
@@ -28,6 +22,7 @@
 }
 
 .dig__logo {
+  margin-left: 50px;
   height: 30px;
 }
 
@@ -36,5 +31,8 @@ button {
 }
 
 @media screen and (max-width: 768px) {
-  
+  .dig__logo {
+    margin-left: 50px;
+    height: 30px;
+  }
 }

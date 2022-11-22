@@ -6,6 +6,7 @@ import img1 from "../../assets/img/ramita.svg";
 import DigNavbar from "../../Components/DigNavbar/DigNavbar";
 import { getLogin, setLogin } from "../../Services/Api";
 import styles from "./Home.module.css";
+import DigFooter from "../../Components/DigFooter/DigFooter";
 
 // reactstrap
 import {
@@ -123,7 +124,7 @@ function Home() {
         </section>
         <section className="row justify-content-center ">
           <Container className="row justify-content-center">
-            <Card className={styles.card__section4}>
+            <Card style={{ background: "none", border: "none" }}>
               <CardImg
                 alt="Card image cap2"
                 src="https://firebasestorage.googleapis.com/v0/b/digapp-b8984.appspot.com/o/72de1097-a93b-4a7d-86c1-5e89815c2ac0?alt=media&token=2052f8de-73e8-432f-97d6-6b450750cfdd"
@@ -142,7 +143,7 @@ function Home() {
         </section>
         <section className="row justify-content-center pb-5 mt-5">
           <Container className="row justify-content-center mb-5 mt-5">
-            <Card className={styles.card__section4}>
+            <Card style={{ background: "none", border: "none" }}>
               <CardImg
                 alt="Card image cap1"
                 src="https://firebasestorage.googleapis.com/v0/b/digapp-b8984.appspot.com/o/image5.jpg?alt=media&token=5536b72b-6237-46b9-bb83-f4ad70ddde90"
@@ -160,6 +161,7 @@ function Home() {
           </Container>
         </section>
       </main>
+      <DigFooter />
     </>
   );
 }

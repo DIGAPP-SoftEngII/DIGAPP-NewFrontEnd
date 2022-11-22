@@ -3,13 +3,16 @@ import React from "react";
 // Core
 import styles from "./NotFound.module.css";
 import BlackLogo from "../../assets/img/BlackLogo.svg";
+import DigNavbar from "../../Components/DigNavbar/DigNavbar";
 
 // reactstrap
 import { Container } from "reactstrap";
+import DigFooter from "../../Components/DigFooter/DigFooter";
 
 function NotFound() {
   return (
     <>
+      <DigNavbar />
       <main className={styles.main}>
         <section className="row justify-content-center">
           <Container className="row justify-content-center">
@@ -24,6 +27,7 @@ function NotFound() {
           </Container>
         </section>
       </main>
+      <DigFooter />
     </>
   );
 }

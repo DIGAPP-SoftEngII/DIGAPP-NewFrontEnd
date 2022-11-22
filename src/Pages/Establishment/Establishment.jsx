@@ -11,6 +11,7 @@ import Stats from "./Sections/Stats";
 
 import Loading from "../../Components/Loading/Loading";
 import { Container } from "reactstrap";
+import DigFooter from "../../Components/DigFooter/DigFooter";
 
 function Establishment() {
   const [ignored, forceUpdate] = useReducer((x) => x + 1, 0);
@@ -55,6 +56,7 @@ function Establishment() {
           <Loading />
         )}
       </main>
+      <DigFooter />
     </>
   );
 }

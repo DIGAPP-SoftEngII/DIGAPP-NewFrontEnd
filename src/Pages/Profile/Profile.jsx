@@ -26,6 +26,7 @@ import { MdOutlineAdd } from "react-icons/md";
 import CEModal from "./Sections/CEModal";
 import PersonalData from "./Sections/PersonalData";
 import UserEsts from "./Sections/UserEsts";
+import DigFooter from "../../Components/DigFooter/DigFooter";
 
 function Profile() {
   //MakingAnEstablishment
@@ -62,6 +63,7 @@ function Profile() {
           </>
         )}
       </main>
+      <DigFooter />
     </>
   );
 }
