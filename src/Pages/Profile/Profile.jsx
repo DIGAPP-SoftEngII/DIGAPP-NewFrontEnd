@@ -50,16 +50,17 @@ function Profile() {
         ) : (
           <>
             <PersonalData user={user} />
-            <section>
-              <Container>
+            <section className="row justify-content-center mt-5">
+              <Container className="row justify-content-center mt-5">
                 <h1>Mis Establecimientos</h1>
-                <Button onClick={toggle}>
-                  Crear <MdOutlineAdd />{" "}
-                </Button>
                 <CEModal toggle={toggle} modal={modal} />
               </Container>
             </section>
             <UserEsts />
+            <Button onClick={toggle} className={styles.button}>
+              Crear <MdOutlineAdd />{" "}
+            </Button>
+            <section className="mb-5 pb-5"></section>
           </>
         )}
       </main>

@@ -1,12 +1,70 @@
 .main {
+  width: 1080px;
+  margin: auto;
   margin-top: 50px;
 }
 
 .card {
+  display: flex;
+  flex-direction: column;
   background-color: rgb(151, 177, 182);
-  text-align: center;
 }
 
 .user__img {
+  text-align: center;
+  display: grid;
+  grid-template-columns: 50% 50%;
   margin-top: 30px;
+  border: solid red;
+}
+
+.profile__header {
+  padding: 30px;
+  padding-left: 100px;
+  border-radius: 20px;
+  background-color: rgb(151, 177, 182);
+  text-align: center;
+  display: grid;
+  grid-template-columns: 20% 70%;
+}
+
+.profile__header__tittle {
+  color: rgba(3, 32, 51, 0.8);
+}
+
+.profile__header__info {
+  padding-left: 70px;
+  text-align: left;
+  color: rgba(3, 32, 51, 0.8);
+}
+
+.button {
+  margin: 30px;
+  background-color: rgba(3, 32, 51, 0.8);
+  color: white;
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+}
+
+@media screen and (max-width: 1200px) {
+  .main {
+    width: 80%;
+  }
+}
+@media screen and (max-width: 992px) {
+  .main {
+    width: 93%;
+  }
+}
+@media screen and (max-width: 768px) {
+  .main {
+    width: 93%;
+  }
+}
+@media screen and (max-width: 576px) {
+  .main {
+    width: 90%;
+    margin: auto;
+  }
 }

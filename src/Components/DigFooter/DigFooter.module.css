@@ -1,4 +1,5 @@
 .footer {
+  width: 100%;
   height: 200px;
 }
 
@@ -39,6 +40,7 @@
 
 @media screen and (max-width: 768px) {
   .footer {
+    width: 100%;
     padding: 20px 0px;
     height: 100%;
   }

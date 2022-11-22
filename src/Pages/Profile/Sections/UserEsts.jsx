@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import styles from "./Styles.module.css";
 import { getEstablishments, deleteEstablishment } from "../../../Services/Api";
 import Loading from "../../../Components/Loading/Loading";
+import Stars from "../../../Components/Stars/Stars";
 
 // Universal Cookies
 import Cookies from "universal-cookie";
@@ -47,52 +48,32 @@ function UserEsts() {
       <main>
         {ests ? (
           ests.map((est) => (
-            <section key={est.bussiness_id} id="card_id">
-              <Container>
+            <section
+              key={est.bussiness_id}
+              className="row justify-content-center mt-3"
+            >
+              <Container className="row justify-content-center">
                 <div className={styles.row}>
-                  <div>
-                    <Link className={styles.link}>
-                      <Card className={styles.card}>
-                        <div>
-                          <img
-                            alt="Card cap"
-                            src={est.cover_picture}
-                            width="100%"
-                          />
-                        </div>
-                        <div>
-                          <CardBody>
-                            <CardTitle tag="h5">{est.name}</CardTitle>
-                            <CardText>Calificacion: {est.rating}</CardText>
-                            <CardText>
-                              Internet: {est.internet_quality}
-                            </CardText>
-                          </CardBody>
-                        </div>
-                      </Card>
-                    </Link>
-                  </div>
-                  <div className={styles.row__udpt}>
-                    <div>
-                      <Button className={styles.button2}>
-                        <MdOutlineRefresh
-                          className={styles.delete__icon}
-                          size={25}
+                  <Link className={styles.link}>
+                    <Card className={styles.card}>
+                      <div>
+                        <img
+                          alt="Card cap"
+                          src={est.cover_picture}
+                          width="100%"
                         />
-                      </Button>
-                    </div>
-                    <div>
-                      <Button
-                        className={styles.button2}
-                        onClick={() => {
-                          console.log(document.getElementById("card_id"));
-                          deleteEstablishment(est.bussiness_id);
-                        }}
-                      >
-                        <FaTrash className={styles.delete__icon} size={25} />
-                      </Button>
-                    </div>
-                  </div>
+                      </div>
+                      <div>
+                        <CardBody>
+                          <CardTitle tag="h5">{est.name}</CardTitle>
+                          <CardText>Calificacion: {est.rating}</CardText>
+                          <Stars state={est.rating} />
+                          <CardText>Internet: {est.internet_quality}</CardText>
+                          <Stars state={est.rating} />
+                        </CardBody>
+                      </div>
+                    </Card>
+                  </Link>
                 </div>
               </Container>
             </section>

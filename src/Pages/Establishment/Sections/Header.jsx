@@ -13,6 +13,7 @@ function Header({ est }) {
             <h1 className={styles.header__tittle}>{est.name}</h1>
             <div className={styles.header__desc}>
               <h3>{est.city}</h3>
+              <span>{est.address}</span>
               <p>{est.description}</p>
             </div>
           </Container>
