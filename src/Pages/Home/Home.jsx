@@ -49,7 +49,7 @@ function Home() {
       ? console.log("LoadingUser...")
       : isAuthenticated
       ? getLogin(user.sub.split("|")[1]).then((res) => {
-          if (res !== 0) {
+          if (res.length !== 0) {
             cookies.set("id", res[0].id, { path: "/" });
           } else {
             setLogin({

@@ -30,13 +30,6 @@ button {
 }
 
 @media screen and (max-width: 768px) {
-  .nav__list {
-    flex-direction: column;
-    margin: auto;
-    text-align: center;
-    margin: 10px 0px;
-  }
-
   .dig__logo {
     margin-left: 50px;
     height: 30px;
