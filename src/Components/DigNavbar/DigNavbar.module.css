@@ -1,8 +1,7 @@
 .nav__list {
-  display: flex;
+  justify-items: right;
+  margin: auto;
   justify-content: space-between;
-  text-align: center;
-  list-style: none;
 }
 
 .nav__item {
@@ -31,6 +30,13 @@ button {
 }
 
 @media screen and (max-width: 768px) {
+  .nav__list {
+    flex-direction: column;
+    margin: auto;
+    text-align: center;
+    margin: 10px 0px;
+  }
+
   .dig__logo {
     margin-left: 50px;
     height: 30px;
