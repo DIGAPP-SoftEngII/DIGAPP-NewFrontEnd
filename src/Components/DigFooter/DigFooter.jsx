@@ -7,6 +7,7 @@ import styles from "./DigFooter.module.css";
 
 // reactstrap
 import { Navbar, NavbarBrand, NavItem, NavbarText, Nav } from "reactstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 // react-icons
 import { FaFacebook, FaInstagram } from "react-icons/fa";

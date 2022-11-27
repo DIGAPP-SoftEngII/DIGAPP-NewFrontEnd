@@ -1,8 +1,8 @@
 import axios from "axios";
 
-export const getEstablishments = () => {
+export const getEstablishments = (name) => {
   return axios
-    .get("https://backenddig.herokuapp.com/api/businesses/")
+    .get("https://backenddig.herokuapp.com/api/businesses/", { params: {} })
     .then((res) => res.data);
 };
 

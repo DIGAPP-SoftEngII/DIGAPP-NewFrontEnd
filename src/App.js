@@ -5,6 +5,7 @@ import Establishment from "./Pages/Establishment/Establishment";
 import Profile from "./Pages/Profile/Profile";
 import styles from "./App.module.css";
 import NotFound from "./Pages/NotFound/NotFound";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
   return (

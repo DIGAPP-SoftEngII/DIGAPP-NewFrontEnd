@@ -1,13 +1,22 @@
 import React from "react";
-import { Spinner } from "reactstrap";
+
+// Core
 import styles from "./Loading.module.css";
-import "bootstrap/dist/css/bootstrap.min.css";
+
+// reactstrap
+import { Container, Spinner } from "reactstrap";
 
 function Loading() {
   return (
-    <div className={styles.spinner}>
-      <Spinner color="dark" type="grow" />
-    </div>
+    <>
+      <main className={styles.main}>
+        <section className="row justify-content-center">
+          <Container className="row justify-content-center">
+            <Spinner color="dark" />
+          </Container>
+        </section>
+      </main>
+    </>
   );
 }
 
