@@ -18,6 +18,7 @@ import {
   CardImgOverlay,
   CardTitle,
   CardText,
+  UncontrolledCarousel,
 } from "reactstrap";
 
 // cookies
@@ -32,6 +33,8 @@ import { FiCoffee } from "react-icons/fi";
 import { TbBrandAirtable } from "react-icons/tb";
 
 function Home() {
+  // Sliders
+
   // Auth0
   const { isAuthenticated, isLoading, user } = useAuth0();
   // universal cookies
@@ -122,42 +125,25 @@ function Home() {
             </div>
           </Container>
         </section>
-        <section className="row justify-content-center ">
-          <Container className="row justify-content-center">
-            <Card style={{ background: "none", border: "none" }}>
-              <CardImg
-                alt="Card image cap2"
-                src="https://firebasestorage.googleapis.com/v0/b/digapp-b8984.appspot.com/o/72de1097-a93b-4a7d-86c1-5e89815c2ac0?alt=media&token=2052f8de-73e8-432f-97d6-6b450750cfdd"
-                className={styles.section4__img}
-              />
-              <CardImgOverlay>
-                <CardTitle tag="h5" className={styles.section4__text}>
-                  ¡ Explora nuestros espacios !
-                </CardTitle>
-                <CardText className={styles.section4__text}>
-                  De seguro encuentras algo a tu gusto.
-                </CardText>
-              </CardImgOverlay>
-            </Card>
-          </Container>
-        </section>
         <section className="row justify-content-center pb-5 mt-5">
           <Container className="row justify-content-center mb-5 mt-5">
-            <Card style={{ background: "none", border: "none" }}>
-              <CardImg
-                alt="Card image cap1"
-                src="https://firebasestorage.googleapis.com/v0/b/digapp-b8984.appspot.com/o/image5.jpg?alt=media&token=5536b72b-6237-46b9-bb83-f4ad70ddde90"
-                className={styles.section4__img}
-              />
-              <CardImgOverlay className={styles.overlay}>
-                <CardTitle tag="h5" className={styles.section4__text}>
-                  ¡ Explora nuestros espacios !
-                </CardTitle>
-                <CardText className={styles.section4__text}>
-                  De seguro encuentras algo a tu gusto.
-                </CardText>
-              </CardImgOverlay>
-            </Card>
+            <UncontrolledCarousel
+              className={styles.section4__img}
+              items={[
+                {
+                  altText: "Slide 1",
+                  caption: "Cafés",
+                  key: 1,
+                  src: "https://firebasestorage.googleapis.com/v0/b/digapp-b8984.appspot.com/o/image4.jpg?alt=media&token=94494680-2128-4e3b-af56-4bce6a172d3d",
+                },
+                {
+                  altText: "Slide 2",
+                  caption: "Coworkings",
+                  key: 2,
+                  src: "https://firebasestorage.googleapis.com/v0/b/digapp-b8984.appspot.com/o/image5.jpg?alt=media&token=5536b72b-6237-46b9-bb83-f4ad70ddde90",
+                },
+              ]}
+            />
           </Container>
         </section>
       </main>
