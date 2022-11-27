@@ -95,11 +95,6 @@
   margin-top: 100px;
 }
 
-.reps__cg {
-  display: grid;
-  grid-template-columns: 25% 25% 25% 25%;
-}
-
 /* TITTLES */
 .tittle1 {
   margin: 50px;
@@ -139,6 +134,14 @@
 /* OTHERS */
 .divider {
   width: 70%;
+}
+
+.scroll__cb {
+  display: block;
+  width: 100%px;
+  height: 300px;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
 }
 
 @media screen and (max-width: 1200px) {

@@ -42,34 +42,36 @@ function CommentBox({ modal, ignored }) {
         <section className="row justify-content-center mt-5 pb-5">
           <Container className="row justify-content-center mb-5">
             <h1 className={styles.tittle2}> Comentarios de la comunidad</h1>
-            <div className={styles.reps__cg}>
-              {reports ? (
-                reports.map((rep) => (
-                  <Card key={rep.id} className={styles.card}>
-                    <span>
-                      Usuario: <span>{rep.user_id}</span>
-                    </span>
-                    <span>
-                      Calificacion: <span>{rep.rating_business}</span>
-                      <Stars state={rep.rating_business} />
-                    </span>
-                    <span>
-                      Internet: <span>{rep.internet_status}</span>
-                      <Stars state={rep.internet_status} />
-                    </span>
-                    <span>
-                      Ocupacion: <span>{rep.occupation_status}</span>
-                      <Stars state={rep.occupation_status} />
-                    </span>
-                    <span>
-                      Comentaro: <p>{rep.comments}</p>
-                    </span>
-                  </Card>
-                ))
-              ) : (
-                <Loading />
-              )}
-            </div>
+            <scroll className={styles.scroll__cb}>
+              <div className={styles.reps__cg}>
+                {reports ? (
+                  reports.map((rep) => (
+                    <Card key={rep.id} className={styles.card}>
+                      <span>
+                        Usuario: <span>{rep.user_id}</span>
+                      </span>
+                      <span>
+                        Calificacion: <span>{rep.rating_business}</span>
+                        <Stars state={rep.rating_business} />
+                      </span>
+                      <span>
+                        Internet: <span>{rep.internet_status}</span>
+                        <Stars state={rep.internet_status} />
+                      </span>
+                      <span>
+                        Ocupacion: <span>{rep.occupation_status}</span>
+                        <Stars state={rep.occupation_status} />
+                      </span>
+                      <span>
+                        Comentaro: <p>{rep.comments}</p>
+                      </span>
+                    </Card>
+                  ))
+                ) : (
+                  <Loading />
+                )}
+              </div>
+            </scroll>
           </Container>
         </section>
       </main>
