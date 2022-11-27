@@ -49,12 +49,6 @@
   color: #ff7261;
 }
 
-.section4__img {
-  height: 700px;
-  object-fit: cover;
-  overflow: hidden;
-}
-
 .section4__text {
   color: white;
   margin-top: 20px;
