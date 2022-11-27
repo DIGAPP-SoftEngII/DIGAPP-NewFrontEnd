@@ -13,11 +13,12 @@ import {
   Card,
   CardBody,
   Container,
-  Row,
-  Col,
   Input,
   CardTitle,
   CardSubtitle,
+  Nav,
+  NavItem,
+  Button,
 } from "reactstrap";
 
 // react-icons
@@ -43,11 +44,22 @@ function Establishments() {
     setEstSearching(resSeaching);
   };
 
-  useEffect(() => {
+  const total = () => {
+    getData();
+  };
+  const favs = () => {
+    setEstSearching([]);
+  };
+
+  const getData = () => {
     getEstablishments().then((data) => {
       setEstablishments(data);
       setEstSearching(data);
     });
+  };
+
+  useEffect(() => {
+    getData();
   }, []);
 
   return (
@@ -55,18 +67,32 @@ function Establishments() {
       <DigNavbar />
       <main className={styles.main}>
         <section className="row justify-content-center">
-          <Container className="row justify-content-center">
-            <h1 className={styles.tittle}>Establecimientos</h1>
+          <Container className="row justify-content-center mt-5">
+            <Nav className={styles.nav__search}>
+              <NavItem className={styles.search__item}>
+                <Button onClick={total} className={styles.button}>
+                  Todos
+                </Button>
+              </NavItem>
+              <NavItem className={styles.search__item}>
+                <Button onClick={favs} className={styles.button}>
+                  Favoritos
+                </Button>
+              </NavItem>
+              <NavItem className={styles.search__item}>
+                <Input
+                  className={styles.search}
+                  onChange={handleChange}
+                  value={search}
+                  placeholder="Buscar"
+                />
+              </NavItem>
+            </Nav>
           </Container>
         </section>
-        <section className="row justify-content-center sticky-top">
-          <Container className="row justify-content-center mb-5">
-            <Input
-              className={styles.search}
-              onChange={handleChange}
-              value={search}
-              placeholder="Buscar"
-            ></Input>
+        <section className="row justify-content-cente">
+          <Container className="row justify-content-center">
+            <h1 className={styles.tittle}>Establecimientos</h1>
           </Container>
         </section>
         <section className="row justify-content-center pb-5">
