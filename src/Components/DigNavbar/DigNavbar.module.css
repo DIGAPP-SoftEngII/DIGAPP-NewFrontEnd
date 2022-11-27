@@ -1,11 +1,17 @@
+.nav__container {
+  padding-right: 70px;
+  padding-left: 70px;
+}
+
 .nav__list {
-  justify-items: right;
-  margin: auto;
-  justify-content: space-between;
+  width: 100%;
+  justify-content: right;
+  margin: 10px 0px;
 }
 
 .nav__item {
   margin: 0 10px;
+  text-align: right;
 }
 
 .nav__link {
@@ -21,7 +27,6 @@
 }
 
 .dig__logo {
-  margin-left: 50px;
   height: 30px;
 }
 
@@ -30,8 +35,17 @@ button {
 }
 
 @media screen and (max-width: 768px) {
-  .dig__logo {
-    margin-left: 50px;
-    height: 30px;
+  .nav__container {
+    padding-right: 0px;
+    padding-left: 0px;
+  }
+
+  .nav__list {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .nav__item {
+    margin: 5px 10px;
   }
 }

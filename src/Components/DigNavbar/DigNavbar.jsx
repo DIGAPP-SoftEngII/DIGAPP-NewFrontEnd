@@ -39,46 +39,49 @@ function DigNavbar() {
             <img src={WhiteLogo} className={styles.dig__logo} />
           </Link>
         </NavbarBrand>
-        <NavbarToggler onClick={toggle} className="me-2" />
-        <Collapse Collapse isOpen={isOpen} navbar>
-          <Nav className="justify-content-end mt-3 mb-3">
-            <NavItem tag={styles.nav__item}>
+        <NavbarToggler onClick={toggle} />
+        <Collapse
+          Collapse
+          isOpen={isOpen}
+          navbar
+          className={styles.nav__collapse}
+        >
+          <Nav className={styles.nav__list}>
+            <NavItem className={styles.nav__item}>
               <Link to="/establishments" className={styles.nav__link}>
                 Establecimientos
               </Link>
             </NavItem>
-            <NavItem className={styles.nav__item}>
-              {isAuthenticated ? (
-                <Nav className="justify-content-end">
-                  <NavItem className={styles.nav__item}>
-                    <Link to="/profile" className={styles.nav__link}>
-                      {user.given_name}
-                    </Link>
-                  </NavItem>
-                  <NavItem className={styles.nav__item}>
-                    <Link
-                      className={styles.nav__link}
-                      onClick={() => {
-                        logout();
-                      }}
-                    >
-                      Logout
-                    </Link>
-                  </NavItem>
-                </Nav>
-              ) : (
+            {isAuthenticated ? (
+              <>
+                <NavItem className={styles.nav__item}>
+                  <Link to="/profile" className={styles.nav__link}>
+                    {user.given_name}
+                  </Link>
+                </NavItem>
                 <NavItem className={styles.nav__item}>
                   <Link
                     className={styles.nav__link}
                     onClick={() => {
-                      loginWithRedirect();
+                      logout();
                     }}
                   >
-                    Login
+                    Logout
                   </Link>
                 </NavItem>
-              )}
-            </NavItem>
+              </>
+            ) : (
+              <NavItem className={styles.nav__item}>
+                <Link
+                  className={styles.nav__link}
+                  onClick={() => {
+                    loginWithRedirect();
+                  }}
+                >
+                  Login
+                </Link>
+              </NavItem>
+            )}
           </Nav>
         </Collapse>
       </Navbar>
