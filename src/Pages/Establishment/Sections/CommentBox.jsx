@@ -24,7 +24,7 @@ function CommentBox({ modal, ignored }) {
         }
         return null;
       });
-      setReports(reps);
+      setReports(reps.reverse());
     });
   };
 
@@ -41,7 +41,11 @@ function CommentBox({ modal, ignored }) {
       <main>
         <section className="row justify-content-center mt-5 pb-5">
           <Container className="row justify-content-center mb-5">
-            <h1 className={styles.tittle2}> Comentarios de la comunidad</h1>
+            <h1 className={styles.tittle2}> Comentarios de la comunidad </h1>
+            <span className="pb-2">
+              {" "}
+              Este establecimiento tiene {reports.length} comentarios
+            </span>
             <scroll className={styles.scroll__cb}>
               <div className={styles.reps__cg}>
                 {reports ? (

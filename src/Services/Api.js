@@ -1,5 +1,11 @@
 import axios from "axios";
 
+export const getFavs = () => {
+  return axios
+    .get("https://backenddig.herokuapp.com/api/favorites/")
+    .then((res) => res.data);
+};
+
 export const getEstablishments = (name) => {
   return axios
     .get("https://backenddig.herokuapp.com/api/businesses/", { params: {} })

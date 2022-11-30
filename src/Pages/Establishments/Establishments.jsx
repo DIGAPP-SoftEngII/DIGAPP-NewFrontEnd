@@ -2,11 +2,16 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 // Core
-import { getEstablishments } from "../../Services/Api";
+import { getEstablishments, getFavs } from "../../Services/Api";
 import Stars from "../../Components/Stars/Stars";
 import Loading from "../../Components/Loading/Loading";
 import DigNavbar from "../../Components/DigNavbar/DigNavbar";
 import styles from "./Establishments.module.css";
+
+// Auth0
+import { useAuth0 } from "@auth0/auth0-react";
+
+import Cookies from "universal-cookie";
 
 // reactstrap
 import {
@@ -22,10 +27,14 @@ import {
 } from "reactstrap";
 
 // react-icons
-import { MdNetworkCheck, MdCheck, MdSearch } from "react-icons/md";
+import { MdNetworkCheck, MdCheck } from "react-icons/md";
 import DigFooter from "../../Components/DigFooter/DigFooter";
 
 function Establishments() {
+  const [fav, setFav] = useState(false);
+  const cookies = new Cookies();
+  const { isAuthenticated, isLoading } = useAuth0();
+  const [favs, setFavs] = useState();
   const [establishments, setEstablishments] = useState();
   const [estSeaching, setEstSearching] = useState();
   const [search, setSearch] = useState();
@@ -36,26 +45,58 @@ function Establishments() {
   };
 
   const filter = (searching) => {
-    var resSeaching = establishments.filter((est) => {
-      if (est.name.toLowerCase().includes(searching.toLowerCase())) {
-        return est;
-      }
-    });
-    setEstSearching(resSeaching);
+    if (fav) {
+      var resSeaching = favs.filter((est) => {
+        if (est.name.toLowerCase().includes(searching.toLowerCase())) {
+          return est;
+        }
+      });
+      setEstSearching(resSeaching);
+    } else {
+      var resSeaching = establishments.filter((est) => {
+        if (est.name.toLowerCase().includes(searching.toLowerCase())) {
+          return est;
+        }
+      });
+      setEstSearching(resSeaching);
+    }
   };
 
-  const total = () => {
-    getData();
-  };
-  const favs = () => {
-    setEstSearching([]);
+  const getFavos = async () => {
+    const favTemp = [];
+    const favsTemp = [];
+    await getFavs().then((res) => {
+      res.map((data) => {
+        if (data.user_id === parseInt(cookies.get("id"))) {
+          favTemp.push(data);
+        }
+      });
+    });
+    favTemp.map((dataFav) => {
+      establishments.map((data) => {
+        if (parseInt(dataFav.business_id) === parseInt(data.id)) {
+          favsTemp.push(data);
+        }
+      });
+    });
+    const temp = new Set(favsTemp);
+    const result = [...temp];
+    setFavs(result);
+    setEstSearching(result);
+    console.log(favs);
   };
 
   const getData = () => {
-    getEstablishments().then((data) => {
-      setEstablishments(data);
-      setEstSearching(data);
-    });
+    if (fav) {
+      getFavos();
+    } else {
+      getEstablishments().then((data) => {
+        setEstablishments(data);
+        const temp = new Set(data);
+        const result = [...temp];
+        setEstSearching(result);
+      });
+    }
   };
 
   useEffect(() => {
@@ -70,15 +111,33 @@ function Establishments() {
           <Container className="row justify-content-center mt-5">
             <Nav className={styles.nav__search}>
               <NavItem className={styles.search__item}>
-                <Button onClick={total} className={styles.button}>
+                <Button
+                  onClick={() => {
+                    setFav(false);
+                    getData();
+                  }}
+                  className={styles.button}
+                >
                   Todos
                 </Button>
               </NavItem>
-              <NavItem className={styles.search__item}>
-                <Button onClick={favs} className={styles.button}>
-                  Favoritos
-                </Button>
-              </NavItem>
+              {isLoading ? (
+                console.log("LoadingUser...")
+              ) : isAuthenticated ? (
+                <NavItem className={styles.search__item}>
+                  <Button
+                    onClick={() => {
+                      getData();
+                      setFav(true);
+                    }}
+                    className={styles.button}
+                  >
+                    Favoritos
+                  </Button>
+                </NavItem>
+              ) : (
+                console.log("NothingIsAuthenticated")
+              )}
               <NavItem className={styles.search__item}>
                 <Input
                   className={styles.search}
