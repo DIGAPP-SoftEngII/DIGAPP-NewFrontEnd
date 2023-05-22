@@ -9,11 +9,11 @@ function Header({ est }) {
       <main>
         <section className="row justify-content-center">
           <Container className="row justify-content-center">
-            <img src={est.cover_picture} className={styles.header__img} />
-            <h1 className={styles.header__tittle}>{est.name}</h1>
+            <img src={est.coverPicture} className={styles.header__img} />
+            <h1 className={styles.header__tittle}>{est.establishmentName}</h1>
             <div className={styles.header__desc}>
-              <h3>{est.city}</h3>
-              <span>{est.address}</span>
+              <h3>{est.city === 1 ? "Bogotá" : "Medellin"}</h3>
+              <span>{est.location}</span>
               <p>{est.description}</p>
             </div>
           </Container>

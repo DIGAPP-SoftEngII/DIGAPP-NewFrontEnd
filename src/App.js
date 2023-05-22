@@ -7,6 +7,7 @@ import styles from "./App.module.css";
 import NotFound from "./Pages/NotFound/NotFound";
 import "bootstrap/dist/css/bootstrap.min.css";
 
+
 function App() {
   return (
     <main className={styles.main}>

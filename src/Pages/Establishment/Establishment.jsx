@@ -13,18 +13,47 @@ import Loading from "../../Components/Loading/Loading";
 import { Container } from "reactstrap";
 import DigFooter from "../../Components/DigFooter/DigFooter";
 
+import { useQuery, gql, useLazyQuery } from "@apollo/client";
+
 function Establishment() {
   const [ignored, forceUpdate] = useReducer((x) => x + 1, 0);
   const [est, setEst] = useState();
   const { id } = useParams();
 
   useEffect(() => {
-    getEstablishment({ id }).then((data) => setEst(data));
+    //getEstablishment({ id }).then((data) => setEst(data));
   }, [ignored]);
-
-  useEffect(() => {
-    getEstablishment({ id }).then((data) => setEst(data));
-  }, [est]);
+  
+  const queryEstablishment = gql`
+    query($establishmentId: String!){
+      findEstablishment(EstablishmentID: $establishmentId){
+        id
+        establishmentName
+        establishmentType
+        opening
+        closing
+        description
+        capacity
+        city
+        location
+        userID
+        coverPicture
+          Statistics {
+            IQAverage
+            SEAverage
+          }
+      }
+    }
+  `
+const [queryEst, result] = useLazyQuery(queryEstablishment)
+useEffect(() => {
+  queryEst({ variables: {establishmentId: id}})
+  if(result.data){
+    console.log(result.data.findEstablishment)
+    setEst(result.data.findEstablishment)
+  }
+  //getEstablishment({ id }).then((data) => setEst(data));
+}, [est]);
 
   return (
     <>
@@ -37,7 +66,7 @@ function Establishment() {
                 <Header est={est} />
               </Container>
             </section>
-            <section className="row justify-content-center">
+            {/* <section className="row justify-content-center">
               <Container className="row justify-content-center mb-5">
                 <Stats est={est} />
               </Container>
@@ -50,7 +79,7 @@ function Establishment() {
                   est={est}
                 />
               </Container>
-            </section>
+            </section> */}
           </>
         ) : (
           <Loading />

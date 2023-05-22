@@ -10,6 +10,7 @@ import styles from "./Establishments.module.css";
 
 // Auth0
 import { useAuth0 } from "@auth0/auth0-react";
+import { useQuery, gql } from "@apollo/client";
 
 import Cookies from "universal-cookie";
 
@@ -99,6 +100,28 @@ function Establishments() {
     }
   };
 
+
+
+  const allEstCard = gql`
+    query{
+      allEstablishments {
+        establishmentName
+        id
+        location
+        userID
+        coverPicture
+          Statistics {
+            IQAverage
+            SEAverage
+          }
+      }
+    }
+  `
+
+  const {data, error, loading} = useQuery(allEstCard)
+
+
+
   useEffect(() => {
     getData();
   }, []);
@@ -157,8 +180,8 @@ function Establishments() {
         <section className="row justify-content-center pb-5">
           <Container className="row justify-content-center mb-5">
             <div className={styles.content}>
-              {estSeaching ? (
-                estSeaching.map((est) => (
+              {!loading ? (
+                data.allEstablishments.map((est) => (
                   <Link
                     key={est.id}
                     className={styles.link}
@@ -167,7 +190,7 @@ function Establishments() {
                     <Card className={styles.card}>
                       <img
                         alt="Sample"
-                        src={est.cover_picture}
+                        src={est.coverPicture}
                         className={styles.card__img}
                       />
                       <CardBody>
@@ -177,14 +200,14 @@ function Establishments() {
                         <div className={styles.card__subtitle}>
                           <CardSubtitle>
                             <h5 className={styles.card__text}>
-                              Direccion: {est.address}
+                              Direccion: {est.location}
                             </h5>
                             <h5 className={styles.card__text}>
                               <div className={styles.card__items}>
                                 <MdCheck size={35} />
                                 <div>
                                   Calificacion:
-                                  <Stars state={est.rating} />
+                                  <Stars state={est.Statistics.SEAverage} />
                                 </div>
                               </div>
                             </h5>
@@ -193,7 +216,7 @@ function Establishments() {
                                 <MdNetworkCheck size={35} />
                                 <div>
                                   Internet:
-                                  <Stars state={est.rating} />
+                                  <Stars state={est.Statistics.IQAverage} />
                                 </div>
                               </div>
                             </h5>

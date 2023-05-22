@@ -1,5 +1,6 @@
 import axios from "axios";
 
+
 export const getFavs = () => {
   return axios
     .get("https://backenddig.herokuapp.com/api/favorites/")
@@ -29,6 +30,7 @@ export const getEstablishment = ({ id }) => {
     .get(`https://backenddig.herokuapp.com/api/businesses/${id}`)
     .then((res) => res.data);
 };
+
 
 export const getReports = () => {
   return axios
