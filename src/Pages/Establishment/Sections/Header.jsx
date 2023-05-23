@@ -9,6 +9,7 @@ function Header({ est }) {
       <main>
         <section className="row justify-content-center">
           <Container className="row justify-content-center">
+            {console.log(est.coverPicture)}
             <img src={est.coverPicture} className={styles.header__img} />
             <h1 className={styles.header__tittle}>{est.establishmentName}</h1>
             <div className={styles.header__desc}>

@@ -45,21 +45,23 @@ function Establishment() {
       }
     }
   `
-const [queryEst, result] = useLazyQuery(queryEstablishment)
+
+
+const {data, error, loading} = useQuery(queryEstablishment, {
+  variables: {establishmentId: id}
+})
+
 useEffect(() => {
-  queryEst({ variables: {establishmentId: id}})
-  if(result.data){
-    console.log(result.data.findEstablishment)
-    setEst(result.data.findEstablishment)
+  if(!loading){
+    setEst(data.findEstablishment)
   }
-  //getEstablishment({ id }).then((data) => setEst(data));
-}, [est]);
+}, [data.findEstablishment]);
 
   return (
     <>
       <DigNavbar />
       <main className={styles.main}>
-        {est ? (
+        { est != undefined ? (          
           <>
             <section className="row justify-content-center">
               <Container className="row justify-content-center">
