@@ -22,7 +22,7 @@ function InfoModal({ infoModal, infoToggle, est }) {
       <main>
         <Modal isOpen={infoModal} toggle={infoToggle}>
           <ModalHeader toggle={infoToggle}>
-            <h2>{est.name}</h2>
+            <h2>{est.establishmentName}</h2>
           </ModalHeader>
           <ModalBody>
             <h3>
@@ -34,19 +34,19 @@ function InfoModal({ infoModal, infoToggle, est }) {
             </p>
             <p className={styles.info__cardParagraph}>
               <MdOutlineMarkunreadMailbox className={styles.info__icons} />
-              Dirección: {est.address}
+              Dirección: {est.location}
             </p>
             <p className={styles.info__cardParagraph}>
               <TbBrandAirtable className={styles.info__icons} />
-              Tipo de Establecimiento: {est.type}
+              Tipo de Establecimiento: {est.establishmentType}
             </p>
             <p className={styles.info__cardParagraph}>
               <MdAccessTime className={styles.info__icons} />
-              Hora apertura: {est.Opening}
+              Hora apertura: {est.opening}
             </p>
             <p className={styles.info__cardParagraph}>
               <MdAccessTimeFilled className={styles.info__icons} />
-              Hora de Cierre: {est.Closing}
+              Hora de Cierre: {est.closing}
             </p>
           </ModalBody>
         </Modal>

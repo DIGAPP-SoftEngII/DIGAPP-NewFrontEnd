@@ -10,12 +10,12 @@ import { getReports } from "../../../Services/Api";
 // reactstrap
 import { Card, Container } from "reactstrap";
 
-function CommentBox({ modal, ignored }) {
+function CommentBox({ modal, ignored, reportes }) {
   // RenderReports
   const [reports, setReports] = useState([]);
   const { id } = useParams();
 
-  const resderReps = () => {
+  const renderReps = () => {
     getReports().then((data) => {
       const reps = [];
       data.map((rep) => {
@@ -29,11 +29,11 @@ function CommentBox({ modal, ignored }) {
   };
 
   useEffect(() => {
-    resderReps();
+    renderReps();
   }, [ignored]);
 
   useEffect(() => {
-    resderReps();
+    renderReps();
   }, [reports]);
 
   return (
@@ -48,26 +48,26 @@ function CommentBox({ modal, ignored }) {
             </span>
             <scroll className={styles.scroll__cb}>
               <div className={styles.reps__cg}>
-                {reports ? (
-                  reports.map((rep) => (
+                {reportes ? (
+                  reportes.map((rep) => (
                     <Card key={rep.id} className={styles.card}>
                       <span>
-                        Usuario: <span>{rep.user_id}</span>
+                        Usuario: <span>{rep.userid}</span>
                       </span>
                       <span>
-                        Calificacion: <span>{rep.rating_business}</span>
-                        <Stars state={rep.rating_business} />
+                        Calificacion: <span>{rep.scoreestablishment}</span>
+                        <Stars state={rep.scoreestablishment} />
                       </span>
                       <span>
-                        Internet: <span>{rep.internet_status}</span>
-                        <Stars state={rep.internet_status} />
+                        Internet: <span>{rep.internetquality}</span>
+                        <Stars state={rep.internetquality} />
                       </span>
-                      <span>
+                      {/* <span>
                         Ocupacion: <span>{rep.occupation_status}</span>
                         <Stars state={rep.occupation_status} />
-                      </span>
+                      </span> */}
                       <span>
-                        Comentaro: <p>{rep.comments}</p>
+                        Comentaro: <p>{rep.review}</p>
                       </span>
                     </Card>
                   ))

@@ -19,19 +19,14 @@ function MenuModal({ menuModal, menuToggle, est }) {
           contentClassName="bg-gradient-danger"
         >
           <ModalHeader toggle={menuToggle}>
-            <h2>{est.name}</h2>
+            <h2>{est.establishmentName}</h2>
           </ModalHeader>
           <ModalBody>
             <h3>
               <GiKnifeFork className={styles.info__icons} /> Menú
             </h3>
             <p className={styles.menuParagraph}>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur
-              sit doloribus voluptatibus! Et eius, officiis, in earum at optio
-              aliquam voluptate consequatur rem iste consectetur cumque
-              similique minus dolores reiciendis accusamus amet placeat tempore
-              veniam. Dignissimos dicta, doloribus magnam suscipit molestiae
-              totam rem quaerat nesciunt! Atque mollitia nam blanditiis amet.
+              {est.menu}
             </p>
           </ModalBody>
         </Modal>

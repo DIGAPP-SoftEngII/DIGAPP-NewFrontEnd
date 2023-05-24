@@ -10,7 +10,7 @@ import { Card, Container } from "reactstrap";
 //react-icons
 import { MdCheck, MdNetworkCheck, MdOutlinePersonAddAlt } from "react-icons/md";
 
-function Stats({ est }) {
+function Stats({ stats, capacity }) {
   return (
     <>
       <main>
@@ -28,8 +28,8 @@ function Stats({ est }) {
                   <div className={styles.card__items}>
                     <MdCheck size={35} />
                     <div>
-                      <Stars state={est.rating} />
-                      <p>{est.rating}</p>
+                      <Stars state={parseFloat(stats.SEAverage)}/>
+                      <p>{parseFloat(stats.SEAverage)}</p>
                     </div>
                   </div>
                 </div>
@@ -38,8 +38,8 @@ function Stats({ est }) {
                   <div className={styles.card__items}>
                     <MdNetworkCheck size={35} />
                     <div>
-                      <Stars state={est.internet_quality} />
-                      <p>{est.internet_quality}</p>
+                      <Stars state={stats.IQAverage} />
+                      <p>{stats.IQAverage}</p>
                     </div>
                   </div>
                 </div>
@@ -47,7 +47,7 @@ function Stats({ est }) {
                   <h5 className={styles.tittle3}>Capacidad</h5>
                   <div className={styles.card__items}>
                     <MdOutlinePersonAddAlt size={35} />
-                    <p>{est.capacity}</p>
+                    <p>{capacity}</p>
                   </div>
                 </div>
               </div>

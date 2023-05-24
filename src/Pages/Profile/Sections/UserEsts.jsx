@@ -31,16 +31,16 @@ function UserEsts() {
   const cookies = new Cookies();
 
   useEffect(() => {
-    getEstablishments().then((res) => {
-      const buss = [];
-      res.map((any) => {
-        if (any.user_id === parseInt(cookies.get("id"))) {
-          buss.push(any);
-        }
-        return null;
-      });
-      setEsts(buss);
-    });
+    // getEstablishments().then((res) => {
+    //   const buss = [];
+    //   res.map((any) => {
+    //     if (any.user_id === parseInt(cookies.get("id"))) {
+    //       buss.push(any);
+    //     }
+    //     return null;
+    //   });
+    //   setEsts(buss);
+    // });
   }, []);
 
   return (

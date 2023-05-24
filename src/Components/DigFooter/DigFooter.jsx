@@ -24,7 +24,7 @@ function DigFooter() {
           </NavbarBrand>
           <Nav className={styles.footer__nav}>
             <NavbarText>
-              <h1 className={styles.footer__tittle}>Nustras Redes</h1>
+              <h1 className={styles.footer__tittle}>Nuestras Redes</h1>
             </NavbarText>
             <NavItem className={styles.footer__item}>
               <a

@@ -79,18 +79,18 @@ function CEModal({ modal, toggle }) {
     const image = await uploadFile(file);
 
     const est = {
-      name: name,
-      Opening: opening,
-      Closing: closing,
-      type: type,
-      address: address,
+      establishmentName: name,
+      opening: opening,
+      closing: closing,
+      establishmenType: type,
+      location: address,
       capacity: capacity,
-      internet_quality: 0,
+      internetquality: 0,
       rating: 0,
       description: desc,
-      cover_picture: image,
+      coverPicture: image,
       city: city,
-      user_id: parseInt(cookies.get("id")),
+      userid: parseInt(cookies.get("id")),
     };
     setEstablishment(est);
   };

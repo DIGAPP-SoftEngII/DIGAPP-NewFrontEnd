@@ -4,7 +4,6 @@ import { useParams } from "react-router-dom";
 //Core
 import styles from "./Establishment.module.css";
 import DigNavbar from "../../Components/DigNavbar/DigNavbar";
-import { getEstablishment } from "../../Services/Api";
 import Header from "./Sections/Header";
 import Information from "./Sections/Information";
 import Stats from "./Sections/Stats";
@@ -38,10 +37,17 @@ function Establishment() {
         location
         userID
         coverPicture
-          Statistics {
-            IQAverage
-            SEAverage
-          }
+        menu
+        Statistics {
+          IQAverage
+          SEAverage
+        }
+        Reports {
+          userid
+          scoreestablishment
+          internetquality
+          review
+        }
       }
     }
   `
@@ -55,7 +61,7 @@ useEffect(() => {
   if(!loading){
     setEst(data.findEstablishment)
   }
-}, [data.findEstablishment]);
+}, [data]);
 
   return (
     <>
@@ -68,9 +74,9 @@ useEffect(() => {
                 <Header est={est} />
               </Container>
             </section>
-            {/* <section className="row justify-content-center">
+            <section className="row justify-content-center">
               <Container className="row justify-content-center mb-5">
-                <Stats est={est} />
+                <Stats stats={est.Statistics} capacity={est.capacity} />
               </Container>
             </section>
             <section className="row justify-content-center">
@@ -81,7 +87,7 @@ useEffect(() => {
                   est={est}
                 />
               </Container>
-            </section> */}
+            </section>
           </>
         ) : (
           <Loading />
