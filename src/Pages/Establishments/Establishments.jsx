@@ -195,7 +195,7 @@ function Establishments() {
                       />
                       <CardBody>
                         <CardTitle tag="h5" className={styles.card__title}>
-                          {est.name}
+                          {est.establishmentName}
                         </CardTitle>
                         <div className={styles.card__subtitle}>
                           <CardSubtitle>

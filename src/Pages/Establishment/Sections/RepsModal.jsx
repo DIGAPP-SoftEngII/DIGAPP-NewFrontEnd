@@ -23,6 +23,8 @@ import {
 import { MdCheck, MdNetworkCheck, MdOutlinePersonAddAlt } from "react-icons/md";
 import { FaStar } from "react-icons/fa";
 
+import { gql, useMutation } from "@apollo/client"
+
 function RepsModal({ repsModal, repsToggle, id, forceUpdate, ignored }) {
   // QualyStars
   const stars = Array(5).fill(0);
@@ -33,10 +35,10 @@ function RepsModal({ repsModal, repsToggle, id, forceUpdate, ignored }) {
   };
 
   // MakingReport
-  const [rating_business, setRating_business] = useState(0);
-  const [internet_status, setInternet_status] = useState(0);
+  const [scoreestablishment, setRating_business] = useState(0);
+  const [internetquality, setInternet_status] = useState(0);
   const [occupation_status, setOccupation_status] = useState("");
-  const [comments, setComments] = useState("");
+  const [review, setComments] = useState("");
   const handleChange = (value) => {
     setComments(value);
   };
@@ -44,22 +46,53 @@ function RepsModal({ repsModal, repsToggle, id, forceUpdate, ignored }) {
   // UserId
   const cookies = new Cookies();
 
+
+  const ADD_REPORT = gql`
+    mutation addReport(
+      $userid: String!, 
+      $establishmentid: String!, 
+      $date: String!, 
+      $internetquality: Float!, 
+      $scoreestablishment: Float!, 
+      $scorereport: Float!, 
+      $review: String!){
+        addReport(
+          userid: $userid, 
+          establishmentid: $establishmentid, 
+          date: $date, 
+          internetquality: $internetquality, 
+          scoreestablishment: $scoreestablishment, 
+          scorereport: $scorereport, 
+          review: $review) 
+        {
+          userid
+        }
+      } 
+  `
+
+
+const [addRep, {data, error}] = useMutation(ADD_REPORT);
+
   const postReport = () => {
-    console.log(cookies.get("id"));
 
     const data = {
-      rating_business,
-      internet_status,
-      occupation_status,
-      comments,
-      report_support: 0,
-      business_id: parseInt(id),
-      user_id: cookies.get("id"),
+      "userid": cookies.get("id").toString(),
+      "establishmentid": id,
+      "date": "2023-05-25",
+      "internetquality": parseFloat(internetquality) ,
+      "scoreestablishment": parseFloat(scoreestablishment) ,
+      "scorereport": parseFloat(0),
+      "review": review
     };
 
-    setReport({ data })
-      .then()
-      .catch((error) => console.log(error));
+    console.log("test",data)
+
+    addRep({variables: data})
+    console.log(error)
+
+    // setReport({ data })
+    //   .then()
+    //   .catch((error) => console.log(error));
   };
 
   return (
@@ -83,7 +116,7 @@ function RepsModal({ repsModal, repsToggle, id, forceUpdate, ignored }) {
                       key={index}
                       size={20}
                       color={
-                        rating_business > index ? colors.orange : colors.grey
+                        scoreestablishment > index ? colors.orange : colors.grey
                       }
                       onClick={() => {
                         setRating_business(index + 1);
@@ -103,7 +136,7 @@ function RepsModal({ repsModal, repsToggle, id, forceUpdate, ignored }) {
                       key={index}
                       size={20}
                       color={
-                        internet_status > index ? colors.orange : colors.grey
+                        internetquality > index ? colors.orange : colors.grey
                       }
                       onClick={() => {
                         setInternet_status(index + 1);
@@ -114,9 +147,9 @@ function RepsModal({ repsModal, repsToggle, id, forceUpdate, ignored }) {
                 <h5>Calificacion del internet</h5>
               </div>
             </div>
-            <div className={styles.card__items}>
+            {/* <div className={styles.card__items}>
               <MdOutlinePersonAddAlt size={35} />
-              <div>
+               <div>
                 {stars2.map((_, index) => {
                   return (
                     <FaStar
@@ -133,7 +166,7 @@ function RepsModal({ repsModal, repsToggle, id, forceUpdate, ignored }) {
                 })}
                 <h5>Que tan lleno esta el lugar</h5>
               </div>
-            </div>
+            </div> */}
             <InputGroup size="sm">
               <InputGroupText>Abc</InputGroupText>
               <Input

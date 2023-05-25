@@ -19,6 +19,7 @@ import {
   InputGroupText,
   Button,
 } from "reactstrap";
+import { gql, useMutation } from "@apollo/client";
 
 function CEModal({ modal, toggle }) {
   // Universal Cookies
@@ -75,24 +76,66 @@ function CEModal({ modal, toggle }) {
     }
   };
 
+
+
+  const addEstablishment = gql`
+    mutation(
+      $userId: String!, 
+      $establishmentName: String!, 
+      $opening: String!, 
+      $closing: String!, 
+      $establishmentType: String!, 
+      $capacity: Int!, 
+      $description: String!, 
+      $menu: String!, 
+      $coverPicture: String!, 
+      $location: String!, 
+      $city: Int!){
+      addEstablishment(
+        userID: $userId, 
+        establishmentName: $establishmentName, 
+        opening: $opening, 
+        closing: $closing, 
+        establishmentType: $establishmentType, 
+        capacity: $capacity, 
+        description: $description, 
+        menu: $menu, 
+        coverPicture: $coverPicture, 
+        location: $location, city: $city) {
+          id
+        }
+    }
+  
+  `
+
+  
+
+  const [ createEstablishment, {data} ] = useMutation(addEstablishment)
+
+
   const handleSubmit = async () => {
-    const image = await uploadFile(file);
+    //const image = await uploadFile(file);
 
     const est = {
+      userId: parseInt(cookies.get("id")),
       establishmentName: name,
       opening: opening,
       closing: closing,
-      establishmenType: type,
-      location: address,
+      establishmentType: type,
       capacity: capacity,
-      internetquality: 0,
-      rating: 0,
       description: desc,
-      coverPicture: image,
+      menu: "Menu Test Web",
+      coverPicture: "https://firebasestorage.googleapis.com/v0/b/digapp-b8984.appspot.com/o/c8f79870-6731-4322-910b-bdff9b8183f9?alt=media&token=2d998ba0-83ac-41b8-bf78-ae9397edb74f",
+      location: address,
       city: city,
-      userid: parseInt(cookies.get("id")),
     };
-    setEstablishment(est);
+    
+
+    createEstablishment({variables: est})
+    console.log(data)
+
+
+    //setEstablishment();
   };
 
   return (
