@@ -13,9 +13,10 @@ const firebaseConfig = {
   projectId: "digapp-b8984",
   storageBucket: "digapp-b8984.appspot.com",
   messagingSenderId: "851392316889",
-  appId: "1:851392316889:web:94e6674478465f3e79c5c8",
-  measurementId: "G-VZE0E236JJ",
+  appId: "1:851392316889:web:f76474cbecfa9c9079c5c8",
+  measurementId: "G-TQQE4V3F7V"
 };
+
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);

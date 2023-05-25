@@ -9,13 +9,16 @@ import { getReports } from "../../../Services/Api";
 
 // reactstrap
 import { Card, Container } from "reactstrap";
+import { useLazyQuery, useQuery } from "@apollo/client";
 
 function CommentBox({ modal, ignored, reportes }) {
   // RenderReports
   const [reports, setReports] = useState([]);
   const { id } = useParams();
 
+
   const renderReps = () => {
+    
     getReports().then((data) => {
       const reps = [];
       data.map((rep) => {
@@ -34,7 +37,7 @@ function CommentBox({ modal, ignored, reportes }) {
 
   useEffect(() => {
     renderReps();
-  }, [reports]);
+  }, [reports, reportes]);
 
   return (
     <>
@@ -44,7 +47,7 @@ function CommentBox({ modal, ignored, reportes }) {
             <h1 className={styles.tittle2}> Comentarios de la comunidad </h1>
             <span className="pb-2">
               {" "}
-              Este establecimiento tiene {reports.length} comentarios
+              Este establecimiento tiene {reportes.length} comentarios
             </span>
             <scroll className={styles.scroll__cb}>
               <div className={styles.reps__cg}>
