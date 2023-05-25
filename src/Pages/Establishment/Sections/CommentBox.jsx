@@ -37,7 +37,7 @@ function CommentBox({ modal, ignored, reportes }) {
 
   useEffect(() => {
     renderReps();
-  }, [reports, reportes]);
+  }, [reports]);
 
   return (
     <>

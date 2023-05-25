@@ -43,10 +43,6 @@ export const queryEstablishment = gql`
   }
 `
 
-
-
-
-
 function Establishment() {
   const [ignored, forceUpdate] = useReducer((x) => x + 1, 0);
   const [est, setEst] = useState();
@@ -56,8 +52,6 @@ function Establishment() {
     //getEstablishment({ id }).then((data) => setEst(data));
   }, [ignored]);
   
-
-
 
 const {data, error, loading} = useQuery(queryEstablishment, {
   variables: {establishmentId: id}
