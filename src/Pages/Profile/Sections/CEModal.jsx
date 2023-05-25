@@ -79,8 +79,8 @@ function CEModal({ modal, toggle }) {
 
 
   const addEstablishment = gql`
-    mutation(
-      $userId: String!, 
+    mutation AddEstablishment(
+      $userId: ID!, 
       $establishmentName: String!, 
       $opening: String!, 
       $closing: String!, 
@@ -90,7 +90,7 @@ function CEModal({ modal, toggle }) {
       $menu: String!, 
       $coverPicture: String!, 
       $location: String!, 
-      $city: Int!){
+      $city: Int!) {
       addEstablishment(
         userID: $userId, 
         establishmentName: $establishmentName, 
@@ -101,38 +101,38 @@ function CEModal({ modal, toggle }) {
         description: $description, 
         menu: $menu, 
         coverPicture: $coverPicture, 
-        location: $location, city: $city) {
-          id
-        }
+        location: $location, 
+        city: $city) {
+      userID
+      }
     }
-  
   `
 
   
 
-  const [ createEstablishment, {data} ] = useMutation(addEstablishment)
+  const [ createEstablishment, {data, error} ] = useMutation(addEstablishment)
 
 
   const handleSubmit = async () => {
-    //const image = await uploadFile(file);
+    const image = await uploadFile(file);
 
     const est = {
-      userId: parseInt(cookies.get("id")),
+      userId: cookies.get("id"),
       establishmentName: name,
       opening: opening,
       closing: closing,
       establishmentType: type,
-      capacity: capacity,
+      capacity: parseInt(capacity),
       description: desc,
       menu: "Menu Test Web",
-      coverPicture: "https://firebasestorage.googleapis.com/v0/b/digapp-b8984.appspot.com/o/c8f79870-6731-4322-910b-bdff9b8183f9?alt=media&token=2d998ba0-83ac-41b8-bf78-ae9397edb74f",
+      coverPicture: image,
       location: address,
       city: city,
     };
     
+    console.log(est)
 
     createEstablishment({variables: est})
-    console.log(data)
 
 
     //setEstablishment();

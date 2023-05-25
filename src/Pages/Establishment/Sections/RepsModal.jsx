@@ -24,6 +24,7 @@ import { MdCheck, MdNetworkCheck, MdOutlinePersonAddAlt } from "react-icons/md";
 import { FaStar } from "react-icons/fa";
 
 import { gql, useMutation } from "@apollo/client"
+import { queryEstablishment } from "../../Establishment/Establishment"
 
 function RepsModal({ repsModal, repsToggle, id, forceUpdate, ignored }) {
   // QualyStars
@@ -49,14 +50,14 @@ function RepsModal({ repsModal, repsToggle, id, forceUpdate, ignored }) {
 
   const ADD_REPORT = gql`
     mutation addReport(
-      $userid: String!, 
-      $establishmentid: String!, 
+      $userid: ID!, 
+      $establishmentid: ID!, 
       $date: String!, 
       $internetquality: Float!, 
       $scoreestablishment: Float!, 
       $scorereport: Float!, 
       $review: String!){
-        addReport(
+      addReport(
           userid: $userid, 
           establishmentid: $establishmentid, 
           date: $date, 
@@ -64,25 +65,27 @@ function RepsModal({ repsModal, repsToggle, id, forceUpdate, ignored }) {
           scoreestablishment: $scoreestablishment, 
           scorereport: $scorereport, 
           review: $review) 
-        {
-          userid
+          {
+            userid
         }
-      } 
-  `
+    }
+  `;
 
 
-const [addRep, {data, error}] = useMutation(ADD_REPORT);
+const [addRep, {data, error}] = useMutation(ADD_REPORT, {
+  refetchQueries: [{ query: queryEstablishment} ]
+});
 
   const postReport = () => {
 
     const data = {
-      "userid": cookies.get("id").toString(),
-      "establishmentid": id,
-      "date": "2023-05-25",
-      "internetquality": parseFloat(internetquality) ,
-      "scoreestablishment": parseFloat(scoreestablishment) ,
-      "scorereport": parseFloat(0),
-      "review": review
+      userid: cookies.get("id").toString(),
+      establishmentid: id,
+      date: "2023-05-25",
+      internetquality: parseFloat(internetquality) ,
+      scoreestablishment: parseFloat(scoreestablishment) ,
+      scorereport: parseFloat(0),
+      review: review
     };
 
     console.log("test",data)

@@ -12,7 +12,40 @@ import Loading from "../../Components/Loading/Loading";
 import { Container } from "reactstrap";
 import DigFooter from "../../Components/DigFooter/DigFooter";
 
-import { useQuery, gql, useLazyQuery } from "@apollo/client";
+import { useQuery, gql} from "@apollo/client";
+
+export const queryEstablishment = gql`
+  query($establishmentId: String!){
+    findEstablishment(EstablishmentID: $establishmentId){
+      id
+      establishmentName
+      establishmentType
+      opening
+      closing
+      description
+      capacity
+      city
+      location
+      userID
+      coverPicture
+      menu
+      Statistics {
+        IQAverage
+        SEAverage
+      }
+      Reports {
+        userid
+        scoreestablishment
+        internetquality
+        review
+      }
+    }
+  }
+`
+
+
+
+
 
 function Establishment() {
   const [ignored, forceUpdate] = useReducer((x) => x + 1, 0);
@@ -23,34 +56,7 @@ function Establishment() {
     //getEstablishment({ id }).then((data) => setEst(data));
   }, [ignored]);
   
-  const queryEstablishment = gql`
-    query($establishmentId: String!){
-      findEstablishment(EstablishmentID: $establishmentId){
-        id
-        establishmentName
-        establishmentType
-        opening
-        closing
-        description
-        capacity
-        city
-        location
-        userID
-        coverPicture
-        menu
-        Statistics {
-          IQAverage
-          SEAverage
-        }
-        Reports {
-          userid
-          scoreestablishment
-          internetquality
-          review
-        }
-      }
-    }
-  `
+
 
 
 const {data, error, loading} = useQuery(queryEstablishment, {
