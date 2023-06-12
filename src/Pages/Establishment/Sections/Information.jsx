@@ -90,7 +90,7 @@ function Information({ forceUpdate, ignored, est }) {
         </section>
         <section className="row justify-content-center">
           <Container className="row justify-content-center">
-            <CommentBox toggle={repsToggle} reportes={est.Reports} />
+            <CommentBox toggle={repsToggle} reportes={est.Reports} name={est.establishmentName} />
           </Container>
         </section>
       </main>

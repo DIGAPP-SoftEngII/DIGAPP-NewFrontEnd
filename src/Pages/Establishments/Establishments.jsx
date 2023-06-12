@@ -10,7 +10,7 @@ import styles from "./Establishments.module.css";
 
 // Auth0
 import { useAuth0 } from "@auth0/auth0-react";
-import { useQuery, gql } from "@apollo/client";
+import { useLazyQuery, gql } from "@apollo/client";
 
 import Cookies from "universal-cookie";
 
@@ -91,12 +91,12 @@ function Establishments() {
     if (fav) {
       getFavos();
     } else {
-      getEstablishments().then((data) => {
-        setEstablishments(data);
-        const temp = new Set(data);
-        const result = [...temp];
-        setEstSearching(result);
-      });
+      // getEstablishments().then((data) => {
+      //   setEstablishments(data);
+      //   const temp = new Set(data);
+      //   const result = [...temp];
+      //   setEstSearching(result);
+      // });
     }
   };
 
@@ -118,13 +118,17 @@ function Establishments() {
     }
   `
 
-  const {data, error, loading} = useQuery(allEstCard)
+  const [getEstablishments, result ] = useLazyQuery(allEstCard)
 
 
 
   useEffect(() => {
-    getData();
-  }, []);
+    getEstablishments()
+    if(result.data){
+      console.log(result.data.allEstablishments)
+      setEstablishments(result.data.allEstablishments)
+    }
+  }, [result.data]);
 
   return (
     <>
@@ -180,8 +184,8 @@ function Establishments() {
         <section className="row justify-content-center pb-5">
           <Container className="row justify-content-center mb-5">
             <div className={styles.content}>
-              {!loading ? (
-                data.allEstablishments.map((est) => (
+              {establishments !== undefined ? (
+                establishments.map((est) => (
                   <Link
                     key={est.id}
                     className={styles.link}

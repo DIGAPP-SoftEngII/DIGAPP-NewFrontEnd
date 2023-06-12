@@ -2,7 +2,6 @@ import React, { useState } from "react";
 
 // Core
 import { uploadFile } from "../../../Services/firebase";
-import { setEstablishment } from "../../../Services/Api";
 
 // Universal Cookies
 import Cookies from "universal-cookie";
@@ -44,11 +43,13 @@ function CEModal({ modal, toggle }) {
     } else if (e.target.name === "closing") {
       setClosing(e.target.value);
     } else if (e.target.name === "type") {
-      if (e.target.value != "--") {
+      if (e.target.value !== "--") {
         if (e.target.value === "Café") {
           setType("Cafe");
         } else if (e.target.value === "Coworking") {
           setType("Corworking");
+        } else if (e.target.value === "Aula de Estudio") {
+          setType("Aula de Estudio");
         }
       } else {
         alert("Ingrese un valor valido");
@@ -60,7 +61,7 @@ function CEModal({ modal, toggle }) {
     } else if (e.target.name === "desc") {
       setDesc(e.target.value);
     } else if (e.target.name === "city") {
-      if (e.target.value != "--") {
+      if (e.target.value !== "--") {
         if (e.target.value === "Bogotá") {
           setCity(1);
         } else if (e.target.value === "Medellin") {
@@ -110,7 +111,7 @@ function CEModal({ modal, toggle }) {
 
   
 
-  const [ createEstablishment, {data, error} ] = useMutation(addEstablishment)
+  const [ createEstablishment ] = useMutation(addEstablishment)
 
 
   const handleSubmit = async () => {
@@ -163,6 +164,7 @@ function CEModal({ modal, toggle }) {
                   <option>--</option>
                   <option>Coworking</option>
                   <option>Café</option>
+                  <option>Aula de Estudio</option>
                 </Input>
               </InputGroup>
               <InputGroup>
